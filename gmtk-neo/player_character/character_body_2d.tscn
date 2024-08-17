@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://wbkaryl8s2tk"]
 
-[ext_resource type="Script" path="res://character_body_2d.gd" id="1_jshvg"]
-[ext_resource type="Texture2D" uid="uid://bo4yrv5yv2as2" path="res://Player.png" id="2_fcodt"]
+[ext_resource type="Script" path="res://player_character/character_body_2d.gd" id="1_jshvg"]
+[ext_resource type="Texture2D" uid="uid://bo4yrv5yv2as2" path="res://art/Player.png" id="2_fcodt"]
 
 [sub_resource type="Animation" id="Animation_gqifu"]
 resource_name = "Idle"

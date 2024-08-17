@@ -7,10 +7,10 @@ extends CharacterBody2D
 @onready var animationTree = $AnimationTree
 @onready var animationState = animationTree.get("parameters/playback")
 
-var large_sprite = preload("res://Player.png")
-var medium_sprite = preload("res://PlayerMedium.png")
-var small_sprite = preload("res://PlayerSmall.png")
-var mini_sprite = preload("res://PlayerMicro.png")
+var large_sprite = preload("res://art/Player.png")
+var medium_sprite = preload("res://art/PlayerMedium.png")
+var small_sprite = preload("res://art/PlayerSmall.png")
+var mini_sprite = preload("res://art/PlayerMicro.png")
 
 const SPEED = 100.0
 const ACCELERATION = 10.0

@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://w6ff25a8e72x"
-path="res://.godot/imported/step_grass.wav-d489faea4a5307ca350e7764eb0c58c7.sample"
+uid="uid://m6p47m0sxodv"
+path="res://.godot/imported/ending_music.wav-6b32df022e7d772d4a2109f94e88aee0.sample"
 
 [deps]
 
-source_file="res://Abilities/step_grass.wav"
-dest_files=["res://.godot/imported/step_grass.wav-d489faea4a5307ca350e7764eb0c58c7.sample"]
+source_file="res://audio/ending_music.wav"
+dest_files=["res://.godot/imported/ending_music.wav-6b32df022e7d772d4a2109f94e88aee0.sample"]
 
 [params]
 

@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://jw32y6mptkhe"
-path="res://.godot/imported/violins.wav-1c3e46fc045e96fd054fb6b59f7c79ca.sample"
+uid="uid://bb3oovklxd6wv"
+path="res://.godot/imported/piano.wav-59ec43f68012fbf9f273aaef6926c60a.sample"
 
 [deps]
 
-source_file="res://Abilities/violins.wav"
-dest_files=["res://.godot/imported/violins.wav-1c3e46fc045e96fd054fb6b59f7c79ca.sample"]
+source_file="res://audio/piano.wav"
+dest_files=["res://.godot/imported/piano.wav-59ec43f68012fbf9f273aaef6926c60a.sample"]
 
 [params]
 

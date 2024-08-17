@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://1yfwruexxqqe"
-path="res://.godot/imported/step_rock.wav-cd828b3de16790f198594f4e83d78a18.sample"
+uid="uid://w6ff25a8e72x"
+path="res://.godot/imported/step_grass.wav-d077d54ae3acaf2647a6ce334a0f6eb2.sample"
 
 [deps]
 
-source_file="res://Abilities/step_rock.wav"
-dest_files=["res://.godot/imported/step_rock.wav-cd828b3de16790f198594f4e83d78a18.sample"]
+source_file="res://audio/step_grass.wav"
+dest_files=["res://.godot/imported/step_grass.wav-d077d54ae3acaf2647a6ce334a0f6eb2.sample"]
 
 [params]
 

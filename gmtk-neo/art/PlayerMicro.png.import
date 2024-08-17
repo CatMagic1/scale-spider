@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2vspv5qnlmri"
-path="res://.godot/imported/PlayerMicro.png-1e91ed6b8bce25030b99fd128f13abf0.ctex"
+path="res://.godot/imported/PlayerMicro.png-0f3a650855408f739ae8791e048c201e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PlayerMicro.png"
-dest_files=["res://.godot/imported/PlayerMicro.png-1e91ed6b8bce25030b99fd128f13abf0.ctex"]
+source_file="res://art/PlayerMicro.png"
+dest_files=["res://.godot/imported/PlayerMicro.png-0f3a650855408f739ae8791e048c201e.ctex"]
 
 [params]
 
