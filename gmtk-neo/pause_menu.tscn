@@ -1,0 +1,220 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm1k2k2lwx66b"]
+
+[ext_resource type="Script" path="res://global/settings_panel.gd" id="1_rjo5m"]
+[ext_resource type="Theme" uid="uid://ptqxgbcb8x0r" path="res://theme/main_theme.tres" id="2_u7cjm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_os07q"]
+content_margin_left = 40.0
+content_margin_top = 10.0
+content_margin_right = 40.0
+content_margin_bottom = 20.0
+bg_color = Color(0.568973, 0.568973, 0.568973, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.281187, 0.281187, 0.281187, 1)
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 2
+visible = false
+
+[node name="SettingsPanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -62.0
+offset_right = 125.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_os07q")
+script = ExtResource("1_rjo5m")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="SettingsPanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="OptionsTitle" type="Label" parent="SettingsPanelContainer/VBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("2_u7cjm")
+theme_override_font_sizes/font_size = 16
+text = "Game Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanelContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanelContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Resume" type="Button" parent="SettingsPanelContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = ExtResource("2_u7cjm")
+theme_override_constants/icon_max_width = 0
+text = "Resume"
+
+[node name="Restart" type="Button" parent="SettingsPanelContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = ExtResource("2_u7cjm")
+text = "Restart"
+
+[node name="Exit" type="Button" parent="SettingsPanelContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = ExtResource("2_u7cjm")
+text = "Quit"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="SettingsPanelContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+
+[node name="OptionsTitle2" type="Label" parent="SettingsPanelContainer/VBoxContainer3/HBoxContainer/VBoxContainer2"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_u7cjm")
+theme_override_font_sizes/font_size = 8
+text = "Settings"
+vertical_alignment = 1
+
+[node name="Volume" type="HBoxContainer" parent="SettingsPanelContainer/VBoxContainer3/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Volumelabel" type="Label" parent="SettingsPanelContainer/VBoxContainer3/HBoxContainer/VBoxContainer2/Volume"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme = ExtResource("2_u7cjm")
+text = "Volume"
+vertical_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsPanelContainer/VBoxContainer3/HBoxContainer/VBoxContainer2/Volume"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+value = 50.0
+
+[node name="Resolution" type="OptionButton" parent="SettingsPanelContainer/VBoxContainer3/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+tooltip_text = "Change the default resolution."
+theme = ExtResource("2_u7cjm")
+item_count = 3
+selected = 1
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1280x720"
+popup/item_1/id = 1
+popup/item_2/text = "1600x900"
+popup/item_2/id = 2
+
+[node name="WindowMode" type="OptionButton" parent="SettingsPanelContainer/VBoxContainer3/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_u7cjm")
+item_count = 3
+selected = 0
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+popup/item_2/text = "Bordeless fullscreen"
+popup/item_2/id = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+
+[node name="OptionsTitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_u7cjm")
+theme_override_font_sizes/font_size = 16
+text = "Game Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Resume" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_u7cjm")
+theme_override_constants/icon_max_width = 0
+text = "Resume"
+
+[node name="Restart" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_u7cjm")
+text = "Restart"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionsTitle2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_u7cjm")
+theme_override_font_sizes/font_size = 8
+text = "Settings"
+vertical_alignment = 1
+
+[node name="Resolution" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Change the default resolution."
+theme = ExtResource("2_u7cjm")
+item_count = 3
+selected = 1
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1280x720"
+popup/item_1/id = 1
+popup/item_2/text = "1600x900"
+popup/item_2/id = 2
+
+[node name="WindowMode" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_u7cjm")
+item_count = 3
+selected = 0
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+popup/item_2/text = "Bordeless fullscreen"
+popup/item_2/id = 2
+
+[node name="Volume" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Volumelabel" type="Label" parent="VBoxContainer/Volume"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme = ExtResource("2_u7cjm")
+text = "Volume"
+vertical_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/Volume"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+value = 50.0
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_u7cjm")
+text = "Quit"
+
+[connection signal="pressed" from="SettingsPanelContainer/VBoxContainer3/HBoxContainer/VBoxContainer/Resume" to="SettingsPanelContainer" method="_on_resume_pressed"]
+[connection signal="pressed" from="SettingsPanelContainer/VBoxContainer3/HBoxContainer/VBoxContainer/Restart" to="SettingsPanelContainer" method="_on_restart_pressed"]
+[connection signal="pressed" from="SettingsPanelContainer/VBoxContainer3/HBoxContainer/VBoxContainer/Exit" to="SettingsPanelContainer" method="_on_exit_pressed"]
+[connection signal="value_changed" from="SettingsPanelContainer/VBoxContainer3/HBoxContainer/VBoxContainer2/Volume/VolumeSlider" to="SettingsPanelContainer" method="_on_volume_changed"]
+[connection signal="item_selected" from="SettingsPanelContainer/VBoxContainer3/HBoxContainer/VBoxContainer2/Resolution" to="SettingsPanelContainer" method="_on_resolution_selected"]
+[connection signal="item_selected" from="SettingsPanelContainer/VBoxContainer3/HBoxContainer/VBoxContainer2/WindowMode" to="SettingsPanelContainer" method="_on_window_mode_selected"]
+[connection signal="pressed" from="VBoxContainer/Resume" to="SettingsPanelContainer" method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Restart" to="SettingsPanelContainer" method="_on_restart_pressed"]
+[connection signal="item_selected" from="VBoxContainer/Resolution" to="SettingsPanelContainer" method="_on_resolution_selected"]
+[connection signal="item_selected" from="VBoxContainer/WindowMode" to="SettingsPanelContainer" method="_on_window_mode_selected"]
+[connection signal="value_changed" from="VBoxContainer/Volume/VolumeSlider" to="SettingsPanelContainer" method="_on_volume_changed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="SettingsPanelContainer" method="_on_exit_pressed"]
