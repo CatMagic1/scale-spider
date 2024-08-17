@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://blsog6wyp8gb"]
+[gd_scene load_steps=15 format=4 uid="uid://blsog6wyp8gb"]
 
 [ext_resource type="Script" path="res://global/input_handler.gd" id="1_of6o0"]
 [ext_resource type="TileSet" uid="uid://bcivxbldl1c5d" path="res://tileset_large.tres" id="1_y3ba4"]
@@ -7,6 +7,23 @@
 [ext_resource type="TileSet" uid="uid://bmolutyui6j4o" path="res://tileset_mini.tres" id="4_6a7yn"]
 [ext_resource type="PackedScene" uid="uid://wbkaryl8s2tk" path="res://character_body_2d.tscn" id="5_xlvgw"]
 [ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://Abilities/grappling_hook.tscn" id="6_nl773"]
+[ext_resource type="AudioStream" uid="uid://bdd0yyd5ge86n" path="res://Abilities/bass.wav" id="8_dkuta"]
+[ext_resource type="AudioStream" uid="uid://b5t1vaqkfxd4n" path="res://Abilities/pads.wav" id="9_jp5rf"]
+[ext_resource type="AudioStream" uid="uid://bb3oovklxd6wv" path="res://Abilities/piano.wav" id="10_nvutc"]
+[ext_resource type="AudioStream" uid="uid://jw32y6mptkhe" path="res://Abilities/violins.wav" id="11_dnlxi"]
+[ext_resource type="PackedScene" uid="uid://daywmkeplsyy5" path="res://flag.tscn" id="12_5kuwq"]
+[ext_resource type="PackedScene" uid="uid://c6wrsgoumq7xa" path="res://ending.tscn" id="13_87dhf"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_pcsu8"]
+stream_count = 4
+stream_0/stream = ExtResource("9_jp5rf")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("10_nvutc")
+stream_1/volume = -60.0
+stream_2/stream = ExtResource("11_dnlxi")
+stream_2/volume = -60.0
+stream_3/stream = ExtResource("8_dkuta")
+stream_3/volume = -60.0
 
 [node name="World" type="Node2D"]
 
@@ -33,3 +50,12 @@ tile_set = ExtResource("4_6a7yn")
 position = Vector2(396, -133)
 
 [node name="GrapplingHook" parent="Player" instance=ExtResource("6_nl773")]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="Player"]
+stream = SubResource("AudioStreamSynchronized_pcsu8")
+autoplay = true
+
+[node name="Flag" parent="." instance=ExtResource("12_5kuwq")]
+collision_layer = 8
+collision_mask = 2
+scene = ExtResource("13_87dhf")

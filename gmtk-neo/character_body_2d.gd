@@ -18,6 +18,8 @@ var deceleration = DECELERATION
 var jump_velocity = JUMP_VELOCITY
 var custom_grav = CUSTOM_GRAV
 
+@onready var stream: AudioStreamSynchronized = $Music.stream
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -41,23 +43,40 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, deceleration)
 		if is_on_floor():
 			animationState.travel("Idle")
-		
+
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 		animationState.travel("Jump")
-	
+
 	move_and_slide()
 
 
 func _process(delta):
 	if Input.is_action_just_pressed("1"):
 		change_size(1)
+		stream.set_sync_stream_volume(0, 0)
+		stream.set_sync_stream_volume(1, -INF)
+		stream.set_sync_stream_volume(2, -INF)
+		stream.set_sync_stream_volume(3, -INF)
 	if Input.is_action_just_pressed("2"):
 		change_size(0.5)
+		stream.set_sync_stream_volume(0, 0)
+		stream.set_sync_stream_volume(1, 0)
+		stream.set_sync_stream_volume(2, -INF)
+		stream.set_sync_stream_volume(3, -INF)
 	if Input.is_action_just_pressed("3"):
 		change_size(0.25)
+		stream.set_sync_stream_volume(0, 0)
+		stream.set_sync_stream_volume(1, 0)
+		stream.set_sync_stream_volume(2, 0)
+		stream.set_sync_stream_volume(3, -INF)
 	if Input.is_action_just_pressed("4"):
 		change_size(0.125)
+		stream.set_sync_stream_volume(0, 0)
+		stream.set_sync_stream_volume(1, 0)
+		stream.set_sync_stream_volume(2, 0)
+		stream.set_sync_stream_volume(3, 0)
+
 
 
 func change_size(modifier):
