@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("walk_left", "walk_right")
 	if direction:
 		velocity.x = move_toward(velocity.x, direction * speed, acceleration)
 		if is_on_floor():
@@ -42,13 +42,13 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor():
 			animationState.travel("Idle")
 		
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 		animationState.travel("Jump")
-
-
-	move_and_slide()
 	
+	move_and_slide()
+
+
 func _process(delta):
 	if Input.is_action_just_pressed("1"):
 		change_size(1)
@@ -58,7 +58,8 @@ func _process(delta):
 		change_size(0.25)
 	if Input.is_action_just_pressed("4"):
 		change_size(0.125)
-	
+
+
 func change_size(modifier):
 	speed = SPEED * modifier
 	acceleration = ACCELERATION * modifier
