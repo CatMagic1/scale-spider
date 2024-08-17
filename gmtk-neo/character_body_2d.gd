@@ -12,6 +12,7 @@ const DECELERATION = 5.0
 const JUMP_VELOCITY = -170.0
 const CUSTOM_GRAV = 490
 
+var is_transforming = false
 var speed = SPEED
 var acceleration = ACCELERATION
 var deceleration = DECELERATION
@@ -20,6 +21,8 @@ var custom_grav = CUSTOM_GRAV
 
 
 func _physics_process(delta: float) -> void:
+	if is_transforming: return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -61,10 +64,16 @@ func _process(delta):
 
 
 func change_size(modifier):
+	var tween = get_tree().create_tween()
+	
 	speed = SPEED * modifier
 	acceleration = ACCELERATION * modifier
 	deceleration = DECELERATION * modifier
 	jump_velocity = JUMP_VELOCITY
-	scale = Vector2(1, 1) * modifier
-	camera.zoom = Vector2(4, 4) / (modifier * 1.5)
+	tween.tween_property(self, "scale", Vector2(1, 1) * modifier, 1)
+	tween.parallel().tween_property(camera, "zoom", Vector2(4, 4) / (modifier * 1.5), 1)
+	animationState.travel("transform")
+	is_transforming = true
+	await animationTree.animation_finished
+	is_transforming = false
 	custom_grav = CUSTOM_GRAV * modifier

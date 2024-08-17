@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://blsog6wyp8gb"]
+[gd_scene load_steps=13 format=4 uid="uid://blsog6wyp8gb"]
 
 [ext_resource type="Script" path="res://global/input_handler.gd" id="1_of6o0"]
 [ext_resource type="TileSet" uid="uid://bcivxbldl1c5d" path="res://tileset_large.tres" id="1_y3ba4"]
@@ -7,6 +7,29 @@
 [ext_resource type="TileSet" uid="uid://bmolutyui6j4o" path="res://tileset_mini.tres" id="4_6a7yn"]
 [ext_resource type="PackedScene" uid="uid://wbkaryl8s2tk" path="res://character_body_2d.tscn" id="5_xlvgw"]
 [ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://Abilities/grappling_hook.tscn" id="6_nl773"]
+[ext_resource type="Shader" path="res://shaders/post_processing.gdshader" id="9_dupvk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kaipa"]
+shader = ExtResource("9_dupvk")
+shader_parameter/change_color_depth = false
+shader_parameter/target_color_depth = 4
+shader_parameter/dithering = true
+shader_parameter/scale_resolution = true
+shader_parameter/target_resolution_scale = 3
+shader_parameter/enable_recolor = false
+
+[sub_resource type="Gradient" id="Gradient_j1nlf"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vwqng"]
+gradient = SubResource("Gradient_j1nlf")
+fill_from = Vector2(0.191919, 0.0353535)
+fill_to = Vector2(1, 0.020202)
+
+[sub_resource type="Environment" id="Environment_ejtjb"]
+background_mode = 3
+ambient_light_color = Color(0.935637, 0.908932, 0.96282, 1)
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture2D_vwqng")
 
 [node name="World" type="Node2D"]
 
@@ -33,3 +56,15 @@ tile_set = ExtResource("4_6a7yn")
 position = Vector2(396, -133)
 
 [node name="GrapplingHook" parent="Player" instance=ExtResource("6_nl773")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_kaipa")
+offset_left = -1171.0
+offset_top = -881.0
+offset_right = 1448.0
+offset_bottom = 876.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ejtjb")
