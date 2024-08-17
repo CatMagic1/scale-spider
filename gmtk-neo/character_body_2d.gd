@@ -1,15 +1,21 @@
 extends CharacterBody2D
 
+@onready var collision = $CollisionShape2D
 @onready var camera = $Camera2D
 @onready var sprite = $Sprite2D
 @onready var animationPlayer = $AnimationPlayer
 @onready var animationTree = $AnimationTree
 @onready var animationState = animationTree.get("parameters/playback")
 
+var large_sprite = preload("res://Player.png")
+var medium_sprite = preload("res://PlayerMedium.png")
+var small_sprite = preload("res://PlayerSmall.png")
+var mini_sprite = preload("res://PlayerMicro.png")
+
 const SPEED = 100.0
 const ACCELERATION = 10.0
 const DECELERATION = 5.0
-const JUMP_VELOCITY = -170.0
+const JUMP_VELOCITY = -180.0
 const CUSTOM_GRAV = 490
 
 var is_transforming = false
@@ -54,6 +60,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+# NOTE thick code.
 func _process(delta):
 	if Input.is_action_just_pressed("1"):
 		change_size(1)
@@ -61,25 +68,36 @@ func _process(delta):
 		stream.set_sync_stream_volume(1, -INF)
 		stream.set_sync_stream_volume(2, -INF)
 		stream.set_sync_stream_volume(3, -INF)
+		sprite.texture = large_sprite
+		collision.shape.radius = 13
+		collision.shape.height = 28
 	if Input.is_action_just_pressed("2"):
 		change_size(0.5)
 		stream.set_sync_stream_volume(0, 0)
 		stream.set_sync_stream_volume(1, 0)
 		stream.set_sync_stream_volume(2, -INF)
 		stream.set_sync_stream_volume(3, -INF)
+		sprite.texture = medium_sprite
+		collision.shape.radius = 6
+		collision.shape.height = 14
 	if Input.is_action_just_pressed("3"):
 		change_size(0.25)
 		stream.set_sync_stream_volume(0, 0)
 		stream.set_sync_stream_volume(1, 0)
 		stream.set_sync_stream_volume(2, 0)
 		stream.set_sync_stream_volume(3, -INF)
+		sprite.texture = small_sprite
+		collision.shape.radius = 7
+		collision.shape.height = 7
 	if Input.is_action_just_pressed("4"):
 		change_size(0.125)
 		stream.set_sync_stream_volume(0, 0)
 		stream.set_sync_stream_volume(1, 0)
 		stream.set_sync_stream_volume(2, 0)
 		stream.set_sync_stream_volume(3, 0)
-
+		sprite.texture = mini_sprite
+		collision.shape.radius = 1.5
+		collision.shape.height = 3.5
 
 
 func change_size(modifier):
