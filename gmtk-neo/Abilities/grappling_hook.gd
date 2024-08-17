@@ -5,7 +5,7 @@ extends Ability
 
 var direction := Vector2(0,0)	# The direction in which the chain was shot
 var tip := Vector2(0,0)			# The global position the tip should be in
-								# We use an extra var for this, because the chain is 
+								# We use an extra var for this, because the chain is
 								# connected to the player and thus all .position
 								# properties would get messed with when the player
 								# moves.
@@ -23,14 +23,14 @@ var parent: CharacterBody2D
 func _ready() -> void:
 	Events.ability_executed.connect(shoot)
 	Events.ability_cancelled.connect(release)
-	
+
 	parent = get_parent()
 
 
 # shoot() shoots the chain in a given direction
 func shoot(idx) -> void:
 	if idx != 1: return
-	
+
 	var mouse_pos = get_global_mouse_position() - get_parent().global_position
 	direction = mouse_pos.normalized()	# Normalize the direction and save it
 	flying = true					# Keep track of our current scan
@@ -65,7 +65,7 @@ func _physics_process(_delta: float) -> void:
 			hooked = true	# Got something!
 			flying = false	# Not flying anymore
 	tip = $Tip.global_position	# set `tip` as starting position for next frame
-	
+
 	if hooked:
 		# `to_local($Chain.tip).normalized()` is the direction that the chain is pulling
 		chain_velocity = to_local(tip).normalized() * CHAIN_PULL
