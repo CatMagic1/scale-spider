@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://b5t1vaqkfxd4n"
-path="res://.godot/imported/pads.wav-dc04ab279a350abf4922061ceebec7d2.sample"
+uid="uid://bdd0yyd5ge86n"
+path="res://.godot/imported/bass.wav-e0ba35a7bad32a9e2c4371717365257d.sample"
 
 [deps]
 
-source_file="res://audio/pads.wav"
-dest_files=["res://.godot/imported/pads.wav-dc04ab279a350abf4922061ceebec7d2.sample"]
+source_file="res://audio/music/bass.wav"
+dest_files=["res://.godot/imported/bass.wav-e0ba35a7bad32a9e2c4371717365257d.sample"]
 
 [params]
 

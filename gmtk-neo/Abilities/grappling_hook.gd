@@ -1,4 +1,3 @@
-class_name GrapplingHook
 extends Ability
 
 @onready var links = $Links		# A slightly easier reference to the links
@@ -38,7 +37,7 @@ func shoot(idx) -> void:
 
 
 # release() the chain
-func release(idx) -> void:
+func release(_idx: float) -> void:
 	flying = false	# Not flying anymore
 	hooked = false	# Not attached anymore
 

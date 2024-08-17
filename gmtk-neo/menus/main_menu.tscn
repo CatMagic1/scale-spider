@@ -1,3 +1,131 @@
-[gd_scene format=3 uid="uid://di5q45btdwehx"]
+[gd_scene load_steps=10 format=3 uid="uid://di5q45btdwehx"]
 
-[node name="MainMenu" type="Node2D"]
+[ext_resource type="Script" path="res://menus/start_button.gd" id="1_2vr7j"]
+[ext_resource type="AudioStream" uid="uid://0dygu0wyvur4" path="res://audio/music/menu.wav" id="1_l3nmd"]
+[ext_resource type="Script" path="res://menus/exit_button.gd" id="2_8gm6p"]
+[ext_resource type="Script" path="res://menus/about_button.gd" id="2_c0yn1"]
+[ext_resource type="AudioStream" uid="uid://1yfwruexxqqe" path="res://audio/sfx/hover.wav" id="5_ar0ym"]
+[ext_resource type="AudioStream" uid="uid://74pyvl7f4xmp" path="res://audio/sfx/click.wav" id="6_frfby"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1iybv"]
+bg_color = Color(1, 1, 1, 0.137255)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0d5jc"]
+random_pitch = 1.1
+random_volume_offset_db = 5.0
+streams_count = 1
+stream_0/stream = ExtResource("5_ar0ym")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_30bix"]
+random_pitch = 1.1
+random_volume_offset_db = 5.0
+streams_count = 1
+stream_0/stream = ExtResource("6_frfby")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_l3nmd")
+autoplay = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1iybv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(540, 360)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -50.5
+offset_right = 27.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Start"
+script = ExtResource("1_2vr7j")
+start_scene = "res://main_scenes/world.tscn"
+
+[node name="AboutButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "About"
+script = ExtResource("2_c0yn1")
+
+[node name="AboutWindow" type="Popup" parent="VBoxContainer/AboutButton"]
+mode = 3
+initial_position = 1
+size = Vector2i(1080, 520)
+visible = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/AboutButton/AboutWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Liammm" type="LinkButton" parent="VBoxContainer/AboutButton/AboutWindow/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Liammm - CatMagic1 - Programmer and Artist"
+
+[node name="Randany" type="LinkButton" parent="VBoxContainer/AboutButton/AboutWindow/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Randany - Programmer"
+
+[node name="Cube Logic" type="LinkButton" parent="VBoxContainer/AboutButton/AboutWindow/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Cube Logic - Programmer and Musician"
+
+[node name="Chappie" type="LinkButton" parent="VBoxContainer/AboutButton/AboutWindow/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "chappie3762 - Artist"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+script = ExtResource("2_8gm6p")
+
+[node name="HoverPlayer" type="AudioStreamPlayer" parent="VBoxContainer"]
+stream = SubResource("AudioStreamRandomizer_0d5jc")
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="VBoxContainer"]
+stream = SubResource("AudioStreamRandomizer_30bix")
+
+[connection signal="mouse_entered" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/AboutButton" to="VBoxContainer/AboutButton" method="_on_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/AboutButton" to="VBoxContainer/AboutButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/ExitButton" to="VBoxContainer/ExitButton" method="_on_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="VBoxContainer/ExitButton" method="_on_pressed"]
