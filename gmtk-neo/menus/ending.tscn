@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://c6wrsgoumq7xa"]
 
-[ext_resource type="AudioStream" uid="uid://m6p47m0sxodv" path="res://Abilities/ending_music.wav" id="1_1nocg"]
+[ext_resource type="AudioStream" uid="uid://m6p47m0sxodv" path="res://audio/music/ending.wav" id="1_1nocg"]
+
 
 [node name="Control" type="Control"]
 layout_mode = 3

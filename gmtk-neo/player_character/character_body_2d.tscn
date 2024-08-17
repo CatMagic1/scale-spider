@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://wbkaryl8s2tk"]
 
 [ext_resource type="Script" path="res://player_character/character_body_2d.gd" id="1_jshvg"]
-[ext_resource type="Texture2D" uid="uid://bo4yrv5yv2as2" path="res://art/Player.png" id="2_fcodt"]
+[ext_resource type="Texture2D" uid="uid://bo4yrv5yv2as2" path="res://art/player_big.png" id="2_fcodt"]
 
 [sub_resource type="Animation" id="Animation_gqifu"]
 resource_name = "Idle"
@@ -199,6 +199,7 @@ collision_layer = 2
 script = ExtResource("1_jshvg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -13)
 texture = ExtResource("2_fcodt")
 hframes = 4
 
@@ -212,6 +213,7 @@ tree_root = SubResource("AnimationNodeStateMachine_o2o2g")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_6x2qj")
 

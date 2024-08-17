@@ -1,18 +1,17 @@
-[gd_scene load_steps=27 format=4 uid="uid://blsog6wyp8gb"]
+[gd_scene load_steps=20 format=4 uid="uid://blsog6wyp8gb"]
 
 [ext_resource type="Script" path="res://global/input_handler.gd" id="1_x6u0i"]
 [ext_resource type="TileSet" uid="uid://c8sxjpbqbt82m" path="res://tilesets/tileset_large.tres" id="2_8dhwf"]
-[ext_resource type="Texture2D" uid="uid://bul0ldy8a5dbh" path="res://art/tileset_medium.png" id="3_s1nnp"]
+[ext_resource type="Texture2D" uid="uid://bul0ldy8a5dbh" path="res://art/MediumTileset.png" id="3_s1nnp"]
 [ext_resource type="TileSet" uid="uid://bbic7jgb140s7" path="res://tilesets/tileset_small.tres" id="4_ssbff"]
 [ext_resource type="TileSet" uid="uid://dqydrjqn2c47c" path="res://tilesets/tileset_mini.tres" id="5_lcoo3"]
 [ext_resource type="PackedScene" uid="uid://wbkaryl8s2tk" path="res://player_character/character_body_2d.tscn" id="6_p4054"]
-[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://abilities/grappling_hook.tscn" id="7_n37cw"]
-[ext_resource type="AudioStream" uid="uid://b5t1vaqkfxd4n" path="res://audio/music/pads.wav" id="8_gdvvd"]
-[ext_resource type="AudioStream" uid="uid://bb3oovklxd6wv" path="res://audio/music/piano.wav" id="9_g25ym"]
-[ext_resource type="AudioStream" uid="uid://jw32y6mptkhe" path="res://audio/music/violins.wav" id="10_0cr3y"]
-[ext_resource type="AudioStream" uid="uid://bdd0yyd5ge86n" path="res://audio/music/bass.wav" id="11_64c47"]
+[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://Abilities/grappling_hook.tscn" id="7_n37cw"]
+[ext_resource type="AudioStream" uid="uid://b5t1vaqkfxd4n" path="res://audio/pads.wav" id="8_gdvvd"]
+[ext_resource type="AudioStream" uid="uid://bb3oovklxd6wv" path="res://audio/piano.wav" id="9_g25ym"]
+[ext_resource type="AudioStream" uid="uid://jw32y6mptkhe" path="res://audio/violins.wav" id="10_0cr3y"]
+[ext_resource type="AudioStream" uid="uid://bdd0yyd5ge86n" path="res://audio/bass.wav" id="11_64c47"]
 [ext_resource type="Shader" path="res://shaders/post_processing.gdshader" id="12_0vpea"]
-[ext_resource type="PackedScene" uid="uid://bm1k2k2lwx66b" path="res://menus/pause_menu.tscn" id="12_cm2ku"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a0jfp"]
 texture = ExtResource("3_s1nnp")
@@ -131,274 +130,6 @@ stream_2/volume = -60.0
 stream_3/stream = ExtResource("11_64c47")
 stream_3/volume = -60.0
 
-[sub_resource type="Animation" id="Animation_jl05k"]
-resource_name = "1"
-capture_included = true
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Music:stream:stream_0/volume")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Music:stream:stream_1/volume")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [-60.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Music:stream:stream_2/volume")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [-60.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Music:stream:stream_3/volume")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [-60.0]
-}
-
-[sub_resource type="Animation" id="Animation_mgp6l"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Music:stream:stream_0/volume")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Music:stream:stream_1/volume")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-60.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Music:stream:stream_2/volume")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-60.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Music:stream:stream_3/volume")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-60.0]
-}
-
-[sub_resource type="Animation" id="Animation_wkujb"]
-resource_name = "2"
-capture_included = true
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Music:stream:stream_0/volume")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Music:stream:stream_1/volume")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Music:stream:stream_2/volume")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [-60.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Music:stream:stream_3/volume")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [-60.0]
-}
-
-[sub_resource type="Animation" id="Animation_tp551"]
-resource_name = "3"
-capture_included = true
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Music:stream:stream_0/volume")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Music:stream:stream_1/volume")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Music:stream:stream_2/volume")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Music:stream:stream_3/volume")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [-60.0]
-}
-
-[sub_resource type="Animation" id="Animation_g0apn"]
-resource_name = "4"
-capture_included = true
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Music:stream:stream_0/volume")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Music:stream:stream_1/volume")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Music:stream:stream_2/volume")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Music:stream:stream_3/volume")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ibedf"]
-_data = {
-"1": SubResource("Animation_jl05k"),
-"2": SubResource("Animation_wkujb"),
-"3": SubResource("Animation_tp551"),
-"4": SubResource("Animation_g0apn"),
-"RESET": SubResource("Animation_mgp6l")
-}
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kaipa"]
 shader = ExtResource("12_0vpea")
 shader_parameter/change_color_depth = false
@@ -450,17 +181,6 @@ position = Vector2(396, -133)
 [node name="Music" type="AudioStreamPlayer2D" parent="Player"]
 stream = SubResource("AudioStreamSynchronized_hf8ti")
 autoplay = true
-
-[node name="MusicAnimation" type="AnimationPlayer" parent="Player"]
-libraries = {
-"": SubResource("AnimationLibrary_ibedf")
-}
-playback_auto_capture_ease_type = 2
-playback_default_blend_time = 1.0
-blend_times = [&"1", &"1", 1.0, &"1", &"2", 1.0, &"1", &"3", 1.0, &"1", &"4", 1.0, &"2", &"1", 1.0, &"2", &"2", 1.0, &"2", &"3", 1.0, &"2", &"4", 1.0, &"3", &"1", 1.0, &"3", &"2", 1.0, &"3", &"3", 1.0, &"3", &"4", 1.0, &"4", &"1", 1.0, &"4", &"2", 1.0, &"4", &"3", 1.0, &"4", &"4", 1.0]
-
-[node name="PauseMenu" parent="Player" instance=ExtResource("12_cm2ku")]
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://jw32y6mptkhe"
-path="res://.godot/imported/violins.wav-7576d0e5478124dd3d5f15678416328b.sample"
+path="res://.godot/imported/violins.wav-235ba2a20ce534c373cc8fa8aa7ca86b.sample"
 
 [deps]
 
-source_file="res://audio/violins.wav"
-dest_files=["res://.godot/imported/violins.wav-7576d0e5478124dd3d5f15678416328b.sample"]
+source_file="res://audio/music/violins.wav"
+dest_files=["res://.godot/imported/violins.wav-235ba2a20ce534c373cc8fa8aa7ca86b.sample"]
 
 [params]
 
