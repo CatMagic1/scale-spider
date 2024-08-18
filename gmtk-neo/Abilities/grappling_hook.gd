@@ -12,6 +12,7 @@ var tip := Vector2(0,0)			# The global position the tip should be in
 const SPEED = 50	# The speed with which the chain moves
 const CHAIN_PULL = 5
 const OFFSET = Vector2(0, -13)
+const RANGE = 150
 
 var flying = false	# Whether the chain is moving through the air
 var hooked = false	# Whether the chain has connected to a wall
@@ -19,6 +20,7 @@ var hooked = false	# Whether the chain has connected to a wall
 var chain_velocity := Vector2(0,0)
 var parent: CharacterBody2D
 var chain_pull = CHAIN_PULL
+var range = RANGE
 
 
 func _ready() -> void:
@@ -50,12 +52,13 @@ func _process(_delta: float) -> void:
 	self.visible = flying or hooked	# Only visible if flying or attached to something
 	if not self.visible:
 		return	# Not visible -> nothing to draw
-	var tip_loc = to_local(tip)	# Easier to work in local coordinates
+	var tip_loc = tip	
 	# We rotate the links (= chain) and the tip to fit on the line between self.position (= origin = player.position) and the tip
-	links.rotation = parent.position.angle_to_point(tip_loc) - deg_to_rad(90)
-	$Tip.rotation = parent.position.angle_to_point(tip_loc) - deg_to_rad(90)
-	links.position = tip_loc						# The links are moved to start at the tip
-	links.region_rect.size.y = tip_loc.length()		# and get extended for the distance between (0,0) and the tip
+	var player_pos = parent.global_position + OFFSET
+	links.rotation = player_pos.angle_to_point(tip_loc) - deg_to_rad(90)
+	$Tip.rotation = player_pos.angle_to_point(tip_loc)
+	links.global_position = (player_pos + tip_loc) / 2						# The links are moved to start at the tip
+	links.region_rect.size.y = player_pos.distance_to(tip_loc)		# and get extended for the distance between (0,0) and the tip
 
 
 # Every physics frame we update the tip position

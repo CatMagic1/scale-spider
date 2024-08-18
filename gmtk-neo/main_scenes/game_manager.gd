@@ -51,15 +51,3 @@ func _on_volume_changed(value):
 
 func _on_exit_game():
 	get_tree().quit()
-
-
-func _on_restart_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_exit_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_volume_slider_value_changed(value: float) -> void:
-	pass # Replace with function body.
