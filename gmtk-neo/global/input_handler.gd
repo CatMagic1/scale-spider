@@ -23,5 +23,5 @@ func _input(event: InputEvent) -> void:
 
 
 	# Toggle pause
-	if Input.is_action_just_pressed("Pause"):
+	if Input.is_action_just_pressed("menu_pause"):
 		Events.toggle_pause_requested.emit()

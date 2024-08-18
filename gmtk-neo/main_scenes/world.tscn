@@ -1,5 +1,6 @@
-[gd_scene load_steps=27 format=4 uid="uid://blsog6wyp8gb"]
+[gd_scene load_steps=28 format=4 uid="uid://blsog6wyp8gb"]
 
+[ext_resource type="Script" path="res://main_scenes/game_manager.gd" id="1_oxcw7"]
 [ext_resource type="Script" path="res://global/input_handler.gd" id="1_x6u0i"]
 [ext_resource type="TileSet" uid="uid://c8sxjpbqbt82m" path="res://tilesets/tileset_large.tres" id="2_8dhwf"]
 [ext_resource type="Texture2D" uid="uid://bul0ldy8a5dbh" path="res://art/tileset_medium.png" id="3_s1nnp"]
@@ -183,57 +184,6 @@ tracks/3/keys = {
 "values": [-60.0]
 }
 
-[sub_resource type="Animation" id="Animation_mgp6l"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Music:stream:stream_0/volume")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Music:stream:stream_1/volume")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-60.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Music:stream:stream_2/volume")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-60.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Music:stream:stream_3/volume")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-60.0]
-}
-
 [sub_resource type="Animation" id="Animation_wkujb"]
 resource_name = "2"
 capture_included = true
@@ -390,6 +340,57 @@ tracks/3/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_mgp6l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Music:stream:stream_0/volume")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Music:stream:stream_1/volume")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-60.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Music:stream:stream_2/volume")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-60.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Music:stream:stream_3/volume")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-60.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ibedf"]
 _data = {
 "1": SubResource("Animation_jl05k"),
@@ -404,8 +405,8 @@ shader = ExtResource("12_0vpea")
 shader_parameter/change_color_depth = false
 shader_parameter/target_color_depth = 4
 shader_parameter/dithering = true
-shader_parameter/scale_resolution = true
-shader_parameter/target_resolution_scale = 3
+shader_parameter/scale_resolution = false
+shader_parameter/target_resolution_scale = 1
 shader_parameter/enable_recolor = false
 
 [sub_resource type="Gradient" id="Gradient_j1nlf"]
@@ -421,7 +422,9 @@ ambient_light_color = Color(0.935637, 0.908932, 0.96282, 1)
 adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture2D_vwqng")
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" node_paths=PackedStringArray("pause_menu")]
+script = ExtResource("1_oxcw7")
+pause_menu = NodePath("PauseMenu")
 
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource("1_x6u0i")
@@ -459,9 +462,6 @@ playback_auto_capture_ease_type = 2
 playback_default_blend_time = 1.0
 blend_times = [&"1", &"1", 1.0, &"1", &"2", 1.0, &"1", &"3", 1.0, &"1", &"4", 1.0, &"2", &"1", 1.0, &"2", &"2", 1.0, &"2", &"3", 1.0, &"2", &"4", 1.0, &"3", &"1", 1.0, &"3", &"2", 1.0, &"3", &"3", 1.0, &"3", &"4", 1.0, &"4", &"1", 1.0, &"4", &"2", 1.0, &"4", &"3", 1.0, &"4", &"4", 1.0]
 
-[node name="PauseMenu" parent="Player" instance=ExtResource("12_cm2ku")]
-visible = false
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
@@ -470,6 +470,18 @@ offset_left = -1171.0
 offset_top = -881.0
 offset_right = 1448.0
 offset_bottom = 876.0
+pivot_offset = Vector2(1333, 713)
+
+[node name="PauseMenu" parent="." instance=ExtResource("12_cm2ku")]
+visible = false
+script = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ejtjb")
+
+[connection signal="value_changed" from="PauseMenu/SettingsPanelContainer/VBoxContainer/HBoxContainer/SettingsContainer/Volume/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="pressed" from="PauseMenu/SettingsPanelContainer/VBoxContainer/HBoxContainer/OptionsContainer/Resume" to="." method="_toggle_paused_game"]
+[connection signal="pressed" from="PauseMenu/SettingsPanelContainer/VBoxContainer/HBoxContainer/OptionsContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/SettingsPanelContainer/VBoxContainer/HBoxContainer/OptionsContainer/Exit" to="." method="_on_exit_pressed"]
+
+[editable path="PauseMenu"]

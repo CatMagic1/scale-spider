@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bm1k2k2lwx66b"]
+[gd_scene load_steps=3 format=3 uid="uid://bm1k2k2lwx66b"]
+
+[sub_resource type="GDScript" id="GDScript_ibgpb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_os07q"]
 content_margin_left = 40.0
@@ -13,6 +15,7 @@ corner_radius_bottom_left = 5
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 2
+script = SubResource("GDScript_ibgpb")
 
 [node name="SettingsPanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 8
@@ -55,36 +58,17 @@ alignment = 1
 layout_mode = 2
 
 [node name="Volumelabel" type="Label" parent="SettingsPanelContainer/VBoxContainer/HBoxContainer/SettingsContainer/Volume"]
-custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Volume"
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="VolumeSlider" type="HSlider" parent="SettingsPanelContainer/VBoxContainer/HBoxContainer/SettingsContainer/Volume"]
-custom_minimum_size = Vector2(70, 0)
+custom_minimum_size = Vector2(140, 0)
+layout_direction = 3
 layout_mode = 2
+size_flags_vertical = 4
 value = 50.0
-
-[node name="Resolution" type="OptionButton" parent="SettingsPanelContainer/VBoxContainer/HBoxContainer/SettingsContainer"]
-layout_mode = 2
-tooltip_text = "Change the default resolution."
-selected = 1
-item_count = 3
-popup/item_0/text = "1920x1080"
-popup/item_1/text = "1280x720"
-popup/item_1/id = 1
-popup/item_2/text = "1600x900"
-popup/item_2/id = 2
-
-[node name="WindowMode" type="OptionButton" parent="SettingsPanelContainer/VBoxContainer/HBoxContainer/SettingsContainer"]
-layout_mode = 2
-selected = 0
-item_count = 3
-popup/item_0/text = "Windowed"
-popup/item_1/text = "Fullscreen"
-popup/item_1/id = 1
-popup/item_2/text = "Bordeless fullscreen"
-popup/item_2/id = 2
 
 [node name="OptionsContainer" type="HBoxContainer" parent="SettingsPanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -106,10 +90,3 @@ text = "Restart"
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Quit"
-
-[connection signal="value_changed" from="SettingsPanelContainer/VBoxContainer/HBoxContainer/SettingsContainer/Volume/VolumeSlider" to="SettingsPanelContainer" method="_on_volume_changed"]
-[connection signal="item_selected" from="SettingsPanelContainer/VBoxContainer/HBoxContainer/SettingsContainer/Resolution" to="SettingsPanelContainer" method="_on_resolution_selected"]
-[connection signal="item_selected" from="SettingsPanelContainer/VBoxContainer/HBoxContainer/SettingsContainer/WindowMode" to="SettingsPanelContainer" method="_on_window_mode_selected"]
-[connection signal="pressed" from="SettingsPanelContainer/VBoxContainer/HBoxContainer/OptionsContainer/Resume" to="SettingsPanelContainer" method="_on_resume_pressed"]
-[connection signal="pressed" from="SettingsPanelContainer/VBoxContainer/HBoxContainer/OptionsContainer/Restart" to="SettingsPanelContainer" method="_on_restart_pressed"]
-[connection signal="pressed" from="SettingsPanelContainer/VBoxContainer/HBoxContainer/OptionsContainer/Exit" to="SettingsPanelContainer" method="_on_exit_pressed"]
