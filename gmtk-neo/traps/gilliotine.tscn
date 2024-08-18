@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvul1rjx7ftik"]
+
+[ext_resource type="Texture2D" uid="uid://vyybu5uy3vlb" path="res://art/Tilemap_underlands_traps.png" id="1_2am6w"]
+[ext_resource type="Script" path="res://traps/Gilliotine.gd" id="1_fvnim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6oxi"]
+size = Vector2(32, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aaxbd"]
+size = Vector2(32, 27)
+
+[sub_resource type="Animation" id="Animation_s1aqf"]
+resource_name = "fall"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(2.92817, 2.46229, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 500), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vr8cp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0akmr"]
+_data = {
+"RESET": SubResource("Animation_vr8cp"),
+"fall": SubResource("Animation_s1aqf")
+}
+
+[node name="Gilliotine" type="Node2D"]
+script = ExtResource("1_fvnim")
+
+[node name="GilliotineContainer" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("1_2am6w")
+region_enabled = true
+region_rect = Rect2(64, 16, 32, 32)
+
+[node name="Area2D" type="Area2D" parent="GilliotineContainer"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GilliotineContainer/Area2D"]
+position = Vector2(3.05176e-05, 13.5)
+shape = SubResource("RectangleShape2D_l6oxi")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="GilliotineContainer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GilliotineContainer/StaticBody2D"]
+position = Vector2(3.05176e-05, -2.49998)
+shape = SubResource("RectangleShape2D_aaxbd")
+
+[node name="Chains" type="Sprite2D" parent="GilliotineContainer"]
+texture_repeat = 2
+position = Vector2(0, -80)
+texture = ExtResource("1_2am6w")
+region_enabled = true
+region_rect = Rect2(176, 0, 32, 128)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GilliotineContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_0akmr")
+}

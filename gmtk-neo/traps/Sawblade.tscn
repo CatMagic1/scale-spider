@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgaffjnid52vx"]
+
+[ext_resource type="Texture2D" uid="uid://vyybu5uy3vlb" path="res://art/Tilemap_underlands_traps.png" id="1_4iyip"]
+[ext_resource type="Script" path="res://traps/Sawblade.gd" id="2_wxuo8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fci2d"]
+atlas = ExtResource("1_4iyip")
+region = Rect2(128, 16, 48, 48)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f7pvn"]
+polygon = PackedVector2Array(11.3474, -19.2095, 16.2768, -15.2456, 21.0841, -4.49341, 20.9095, 5.20435, 17.8053, 10.9724, 13.7012, 16.7234, 0.666687, 21.6666, -13.3333, 17.6666, -20.154, 8.38965, -21.9792, -1.34204, -18.8225, -10.0193, -14.7184, -15.7705, -9, -20, 0.666687, -22)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7aqex"]
+radius = 23.676
+
+[sub_resource type="Animation" id="Animation_6xpqm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1mi36"]
+resource_name = "Spin"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u2uto"]
+_data = {
+"RESET": SubResource("Animation_6xpqm"),
+"Spin": SubResource("Animation_1mi36")
+}
+
+[node name="Sawblade" type="Sprite2D"]
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_fci2d")
+script = ExtResource("2_wxuo8")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_f7pvn")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7aqex")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u2uto")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

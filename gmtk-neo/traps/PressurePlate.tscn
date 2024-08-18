@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2uswg204hipl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce5cq"]
+region = Rect2(0, 8, 16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_to213"]
+size = Vector2(14, 1.00001)
+
+[node name="PressurePlate" type="Area2D"]
+scale = Vector2(5, 5)
+collision_layer = 2
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_ce5cq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.05176e-05, 3.5)
+shape = SubResource("RectangleShape2D_to213")
