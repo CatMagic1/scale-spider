@@ -99,7 +99,7 @@ func change_size(modifier: float) -> void:
 	speed = SPEED / (modifier + 0.5)
 	acceleration = ACCELERATION / modifier
 	jump_velocity = JUMP_VELOCITY
-	tween.tween_property(camera, "zoom", Vector2(4, 4) / (modifier + 0.5), 1)
+	tween.tween_property(camera, "zoom", Vector2(4, 4) / (modifier), 1)
 	custom_grav = CUSTOM_GRAV * modifier
 	animation_state.travel("transform")
 	is_transforming = true

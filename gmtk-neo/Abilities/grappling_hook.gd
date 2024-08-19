@@ -10,7 +10,7 @@ var tip := Vector2(0,0)			# The global position the tip should be in
 								# moves.
 
 const SPEED = 50	# The speed with which the chain moves
-const CHAIN_PULL = 5
+const CHAIN_PULL = 50
 const OFFSET = Vector2(0, -13)
 const RANGE = 150
 
@@ -92,4 +92,4 @@ func _physics_process(_delta: float) -> void:
 
 
 func _update_chain_pull(value):
-	chain_pull = CHAIN_PULL / value
+	chain_pull = CHAIN_PULL
