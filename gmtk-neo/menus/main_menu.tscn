@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://di5q45btdwehx"]
+[gd_scene load_steps=54 format=4 uid="uid://di5q45btdwehx"]
 
 [ext_resource type="Script" path="res://menus/start_button.gd" id="1_2vr7j"]
 [ext_resource type="AudioStream" uid="uid://0dygu0wyvur4" path="res://audio/music/menu.wav" id="1_l3nmd"]
@@ -6,16 +6,18 @@
 [ext_resource type="Script" path="res://menus/exit_button.gd" id="2_8gm6p"]
 [ext_resource type="Script" path="res://menus/about_button.gd" id="2_c0yn1"]
 [ext_resource type="Theme" uid="uid://d4fvlsthuo5w3" path="res://themes/main_theme.tres" id="4_e1wnj"]
+[ext_resource type="TileSet" uid="uid://crwkjsaye7odi" path="res://tilesets/tileset_small.tres" id="4_s1xmf"]
 [ext_resource type="AudioStream" uid="uid://1yfwruexxqqe" path="res://audio/sfx/hover.wav" id="5_ar0ym"]
 [ext_resource type="AudioStream" uid="uid://74pyvl7f4xmp" path="res://audio/sfx/click.wav" id="6_frfby"]
 [ext_resource type="Script" path="res://player_character/character_body_2d.gd" id="8_ua585"]
-[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://abilities/grappling_hook.tscn" id="9_0qgq3"]
+[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://Abilities/grappling_hook.tscn" id="9_0qgq3"]
 [ext_resource type="Texture2D" uid="uid://bo4yrv5yv2as2" path="res://art/player_big.png" id="9_h6xmk"]
 [ext_resource type="AudioStream" uid="uid://b5t1vaqkfxd4n" path="res://audio/music/pads.wav" id="10_h4ogd"]
 [ext_resource type="AudioStream" uid="uid://bb3oovklxd6wv" path="res://audio/music/piano.wav" id="11_4qjjw"]
 [ext_resource type="AudioStream" uid="uid://jw32y6mptkhe" path="res://audio/music/violins.wav" id="12_4wt2a"]
 [ext_resource type="AudioStream" uid="uid://bdd0yyd5ge86n" path="res://audio/music/bass.wav" id="13_daruw"]
 [ext_resource type="TileSet" uid="uid://bcivxbldl1c5d" path="res://tilesets/tileset_large.tres" id="15_lpsxv"]
+[ext_resource type="Texture2D" uid="uid://dslwq1neilfqs" path="res://art/Perspective_-_Main_Menu.png" id="18_g33sx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1iybv"]
 bg_color = Color(1, 1, 1, 0.137255)
@@ -532,9 +534,16 @@ stream = ExtResource("1_l3nmd")
 autoplay = true
 
 [node name="Large2" type="TileMapLayer" parent="."]
+visible = false
 position = Vector2(630, 322)
 tile_map_data = PackedByteArray("AAD4/wAAAwABAAAAAAD5/wAAAwACAAAAAAD6/wAAAwACAAAAAAD7/wAAAwACAAAAAAD8/wAAAwACAAAAAAD9/wAAAwACAAAAAAD+/wAAAwACAAAAAAD//wAAAwACAAAAAAAAAAAAAwACAAAAAAABAAAAAwACAAAAAAACAAAAAwACAAAAAAADAAAAAwACAAAAAAAEAAAAAwACAAAAAAAFAAAAAwACAAAAAAAGAAAAAwACAAAAAAAHAAAAAwADAAAAAAA=")
 tile_set = ExtResource("15_lpsxv")
+
+[node name="Small" type="TileMapLayer" parent="."]
+visible = false
+position = Vector2(625, 110)
+tile_map_data = PackedByteArray("AADh////AAAAAAAAAADz////AAAAAAAAAADt////AAAAAAAAAADs////AAAAAAAAAADj////AAAAAAAAAADi////AAAAAAAAAADk////AAAAAAAAAADl////AAAAAAAAAADm////AAAAAAAAAADn////AAAAAAAAAADo////AAAAAAAAAADp////AAAAAAAAAADq////AAAAAAAAAADr////AAAAAAAAAADu////AAAAAAAAAADv////AAAAAAAAAADw////AAAAAAAAAADx////AAAAAAAAAADy////AAAAAAAAAAD0////AAAAAAAAAAD1////AAAAAAAAAAD2////AAAAAAAAAAD3////AAAAAAAAAAD4////AAAAAAAAAAD5////AAAAAAAAAAD6////AAAAAAAAAAD7////AAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAAQAP//AAAAAAAAAAARAP//AAAAAAAAAAASAP//AAAAAAAAAAATAP//AAAAAAAAAAAUAP//AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAAAAAAAAAAXAP//AAAAAAAAAAAYAP//AAAAAAAAAAAZAP//AAAAAAAAAAAaAP//AAAAAAAAAAAbAP//AAAAAAAAAAAcAP//AAAAAAAAAAAdAP//AAAAAAAAAAAeAP//AAAAAAAAAAAfAP//AAAAAAAAAAAgAP//AAAAAAAAAAAhAP//AAAAAAAAAAAhAAAAAAAAAAAAAAAhAAEAAAAAAAAAAAAhAAIAAAAAAAAAAAAhAAMAAAAAAAAAAAAhAAQAAAAAAAAAAAAhAAUAAAAAAAAAAAAhAAYAAAAAAAAAAAAhAAcAAAAAAAAAAAAhAAgAAAAAAAAAAAAhAAkAAAAAAAAAAAAhAAoAAAAAAAAAAAAhAAsAAAAAAAAAAAAhAAwAAAAAAAAAAAAhAA0AAAAAAAAAAAAhAA4AAAAAAAAAAAAhAA8AAAAAAAAAAAAhABAAAAAAAAAAAAAhABEAAAAAAAAAAAAhABIAAAAAAAAAAAAhABMAAAAAAAAAAAAhABQAAAAAAAAAAAAhABUAAAAAAAAAAAAhABYAAAAAAAAAAAAhABcAAAAAAAAAAAAhABgAAAAAAAAAAAAhABkAAAAAAAAAAAAhABoAAAAAAAAAAAAhABsAAAAAAAAAAAAhABwAAAAAAAAAAAAhAB0AAAAAAAAAAAAhAB4AAAAAAAAAAAAhAB8AAAAAAAAAAAAhACAAAAAAAAAAAAAhACEAAAAAAAAAAAAhACIAAAAAAAAAAAAhACMAAAAAAAAAAAAhACQAAAAAAAAAAAAhACUAAAAAAAAAAAAhACYAAAAAAAAAAAAhACcAAAAAAAAAAAAhACgAAAAAAAAAAAAhACkAAAAAAAAAAAAhACoAAAAAAAAAAAAhACsAAAAAAAAAAAAhACwAAAAAAAAAAAAhAC0AAAAAAAAAAAAhAC4AAAAAAAAAAAAhAC8AAAAAAAAAAAAhADAAAAAAAAAAAAAhADEAAAAAAAAAAAAhADIAAAAAAAAAAAAhADMAAAAAAAAAAAAhADQAAAAAAAAAAAAhADUAAAAAAAAAAAAhADYAAAAAAAAAAAAhADcAAAAAAAAAAAAhADgAAAAAAAAAAAAhADkAAAAAAAAAAAAhADoAAAAAAAAAAAAhADsAAAAAAAAAAAAhADwAAAAAAAAAAAAhAD0AAAAAAAAAAAAhAD4AAAAAAAAAAAAhAD8AAAAAAAAAAAAgAD8AAAAAAAAAAAAfAD8AAAAAAAAAAAAeAD8AAAAAAAAAAAAdAD8AAAAAAAAAAAAcAD8AAAAAAAAAAAAbAD8AAAAAAAAAAAAaAD8AAAAAAAAAAAAZAD8AAAAAAAAAAAAYAD8AAAAAAAAAAAAXAD8AAAAAAAAAAAAWAD8AAAAAAAAAAAAVAD8AAAAAAAAAAAAUAD8AAAAAAAAAAAATAD8AAAAAAAAAAAASAD8AAAAAAAAAAAARAD8AAAAAAAAAAAAQAD8AAAAAAAAAAAAPAD8AAAAAAAAAAAAOAD8AAAAAAAAAAAANAD8AAAAAAAAAAAAMAD8AAAAAAAAAAAALAD8AAAAAAAAAAAAKAD8AAAAAAAAAAAAJAD8AAAAAAAAAAAAIAD8AAAAAAAAAAAAHAD8AAAAAAAAAAAAGAD8AAAAAAAAAAAAFAD8AAAAAAAAAAAAEAD8AAAAAAAAAAAADAD8AAAAAAAAAAAACAD8AAAAAAAAAAAABAD8AAAAAAAAAAAAAAD8AAAAAAAAAAAD//z8AAAAAAAAAAAD+/z8AAAAAAAAAAAD9/z8AAAAAAAAAAAD8/z8AAAAAAAAAAAD7/z8AAAAAAAAAAAD6/z8AAAAAAAAAAAD5/z8AAAAAAAAAAAD4/z8AAAAAAAAAAAD3/z8AAAAAAAAAAAD2/z8AAAAAAAAAAAD1/z8AAAAAAAAAAAD0/z8AAAAAAAAAAADz/z8AAAAAAAAAAADy/z8AAAAAAAAAAADx/z8AAAAAAAAAAADw/z8AAAAAAAAAAADv/z8AAAAAAAAAAADu/z8AAAAAAAAAAADt/z8AAAAAAAAAAADs/z8AAAAAAAAAAADr/z8AAAAAAAAAAADq/z8AAAAAAAAAAADp/z8AAAAAAAAAAADo/z8AAAAAAAAAAADn/z8AAAAAAAAAAADm/z8AAAAAAAAAAADl/z8AAAAAAAAAAADk/z8AAAAAAAAAAADj/z8AAAAAAAAAAADi/z8AAAAAAAAAAADh/z8AAAAAAAAAAADh/z4AAAAAAAAAAADh/z0AAAAAAAAAAADh/zwAAAAAAAAAAADh/zsAAAAAAAAAAADh/zoAAAAAAAAAAADh/zkAAAAAAAAAAADh/zgAAAAAAAAAAADh/zcAAAAAAAAAAADh/zYAAAAAAAAAAADh/zUAAAAAAAAAAADh/zQAAAAAAAAAAADh/zMAAAAAAAAAAADh/zIAAAAAAAAAAADh/zEAAAAAAAAAAADh/zAAAAAAAAAAAADh/y8AAAAAAAAAAADh/y4AAAAAAAAAAADh/y0AAAAAAAAAAADh/ywAAAAAAAAAAADh/ysAAAAAAAAAAADh/yoAAAAAAAAAAADh/ykAAAAAAAAAAADh/ygAAAAAAAAAAADh/ycAAAAAAAAAAADh/yYAAAAAAAAAAADh/yUAAAAAAAAAAADh/yQAAAAAAAAAAADh/yMAAAAAAAAAAADh/yIAAAAAAAAAAADh/yEAAAAAAAAAAADh/yAAAAAAAAAAAADh/x8AAAAAAAAAAADh/x4AAAAAAAAAAADh/x0AAAAAAAAAAADh/xwAAAAAAAAAAADh/xsAAAAAAAAAAADh/xoAAAAAAAAAAADh/xkAAAAAAAAAAADh/xgAAAAAAAAAAADh/xcAAAAAAAAAAADh/xYAAAAAAAAAAADh/xUAAAAAAAAAAADh/xQAAAAAAAAAAADh/xMAAAAAAAAAAADh/xIAAAAAAAAAAADh/xEAAAAAAAAAAADh/xAAAAAAAAAAAADh/w8AAAAAAAAAAADh/w4AAAAAAAAAAADh/w0AAAAAAAAAAADh/wwAAAAAAAAAAADh/wsAAAAAAAAAAADh/woAAAAAAAAAAADh/wkAAAAAAAAAAADh/wgAAAAAAAAAAADh/wcAAAAAAAAAAADh/wYAAAAAAAAAAADh/wUAAAAAAAAAAADh/wQAAAAAAAAAAADh/wMAAAAAAAAAAADh/wIAAAAAAAAAAADh/wEAAAAAAAAAAADh/wAAAAAAAAAAAAA=")
+tile_set = ExtResource("4_s1xmf")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -552,12 +561,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -605.0
-offset_top = 176.0
-offset_right = -65.0
-offset_bottom = 328.0
+offset_left = -202.0
+offset_top = -101.0
+offset_right = 198.0
+offset_bottom = 103.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
@@ -640,7 +650,7 @@ stream = SubResource("AudioStreamRandomizer_0d5jc")
 stream = SubResource("AudioStreamRandomizer_30bix")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(631, 287)
+position = Vector2(631, 95)
 collision_layer = 2
 script = ExtResource("8_ua585")
 
@@ -680,6 +690,28 @@ libraries = {
 playback_auto_capture_ease_type = 2
 playback_default_blend_time = 1.0
 blend_times = [&"1", &"1", 1.0, &"1", &"2", 1.0, &"1", &"3", 1.0, &"1", &"4", 1.0, &"2", &"1", 1.0, &"2", &"2", 1.0, &"2", &"3", 1.0, &"2", &"4", 1.0, &"3", &"1", 1.0, &"3", &"2", 1.0, &"3", &"3", 1.0, &"3", &"4", 1.0, &"4", &"1", 1.0, &"4", &"2", 1.0, &"4", &"3", 1.0, &"4", &"4", 1.0]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="BG" type="TextureRect" parent="Background"]
+z_index = -2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_g33sx")
+
+[node name="Label" type="Label" parent="Background"]
+offset_left = 389.0
+offset_top = 112.0
+offset_right = 629.0
+offset_bottom = 152.0
+theme = ExtResource("4_e1wnj")
+theme_override_colors/font_color = Color(0.435294, 0.435294, 0.435294, 1)
+theme_override_font_sizes/font_size = 24
+text = "Perspective.exe"
 
 [connection signal="mouse_entered" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_pressed"]

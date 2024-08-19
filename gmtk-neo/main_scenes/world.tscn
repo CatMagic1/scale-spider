@@ -7,7 +7,7 @@
 [ext_resource type="TileSet" uid="uid://crwkjsaye7odi" path="res://tilesets/tileset_small.tres" id="4_ssbff"]
 [ext_resource type="TileSet" uid="uid://bmolutyui6j4o" path="res://tilesets/tileset_mini.tres" id="5_lcoo3"]
 [ext_resource type="PackedScene" uid="uid://wbkaryl8s2tk" path="res://player_character/character_body_2d.tscn" id="6_p4054"]
-[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://abilities/grappling_hook.tscn" id="7_n37cw"]
+[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://Abilities/grappling_hook.tscn" id="7_n37cw"]
 [ext_resource type="AudioStream" uid="uid://b5t1vaqkfxd4n" path="res://audio/music/pads.wav" id="8_gdvvd"]
 [ext_resource type="AudioStream" uid="uid://bb3oovklxd6wv" path="res://audio/music/piano.wav" id="9_g25ym"]
 [ext_resource type="AudioStream" uid="uid://jw32y6mptkhe" path="res://audio/music/violins.wav" id="10_0cr3y"]
