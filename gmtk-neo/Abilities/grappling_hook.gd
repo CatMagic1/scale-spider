@@ -9,8 +9,8 @@ var tip := Vector2(0,0)			# The global position the tip should be in
 								# properties would get messed with when the player
 								# moves.
 
-const SPEED = 50	# The speed with which the chain moves
-const CHAIN_PULL = 5
+const SPEED = 20	# The speed with which the chain moves
+const CHAIN_PULL = 10
 const OFFSET = Vector2(0, -13)
 const RANGE = 150
 
@@ -39,7 +39,7 @@ func shoot(idx) -> void:
 	direction = mouse_pos.normalized()	# Normalize the direction and save it
 	flying = true					# Keep track of our current scan
 	tip = parent.global_position + OFFSET		# reset the tip position to the player's position
-
+	$Tip.get_children()[0].frame = 0
 
 # release() the chain
 func release(_idx: float) -> void:
@@ -69,6 +69,7 @@ func _physics_process(_delta: float) -> void:
 		if $Tip.move_and_collide(direction * SPEED):
 			hooked = true	# Got something!
 			flying = false	# Not flying anymore
+			$Tip.get_children()[0].frame = 1
 	tip = $Tip.global_position	# set `tip` as starting position for next frame
 
 	if hooked:
