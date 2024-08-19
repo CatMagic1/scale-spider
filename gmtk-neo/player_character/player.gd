@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var camera: Camera2D = $Camera2D
@@ -14,23 +15,32 @@ var medium_sprite := preload("res://art/player_medium.png")
 var small_sprite := preload("res://art/player_small.png")
 var mini_sprite := preload("res://art/player_micro.png")
 
-const SPEED := 100.0
-const ACCELERATION := 5.0
-const DECELERATION := 5.0
-const JUMP_VELOCITY := -180.0
-const CUSTOM_GRAV := 490.0
+@export var initial_speed := 100.0
+@export var initial_acceleration := 10.0
+@export var initial_decceleration := 10.0
+@export var initial_jump_velocity := -200.0
+@export var initial_gravity := 480.0
+
+# Left to right
+# Pivot - grappling
+# Level design with what we have
+
+# Big size - move fast
+# Medium size -
+# Small size - use grapple (pivots)
+# Tiny size
 
 var is_transforming := false
-var speed := SPEED
-var acceleration := ACCELERATION
-var deceleration := DECELERATION
-var jump_velocity := JUMP_VELOCITY
-var custom_grav := CUSTOM_GRAV
+var speed := initial_speed
+var acceleration := initial_acceleration
+var deceleration := initial_decceleration
+var jump_velocity := initial_jump_velocity
+var custom_grav := initial_gravity
 
 
 func _physics_process(delta: float) -> void:
 	if is_transforming: return
-	
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -63,10 +73,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-# TODO MUSIC ANIMATION PLAYER DOES NOT EXIST
 func _input(event: InputEvent) -> void:
 	if is_transforming: return
-	
+
 	if event.is_action_pressed("1"):
 		music_animation.play("4")
 		sprite.texture = large_sprite
@@ -96,11 +105,11 @@ func _input(event: InputEvent) -> void:
 func change_size(modifier: float) -> void:
 	Events.scale_changed.emit(modifier)
 	var tween: Tween = get_tree().create_tween()
-	speed = SPEED / (modifier + 0.5)
-	acceleration = ACCELERATION / modifier
-	jump_velocity = JUMP_VELOCITY
+	speed = initial_speed / (modifier + 0.5)
+	acceleration = initial_acceleration / modifier
+	jump_velocity = initial_jump_velocity
 	tween.tween_property(camera, "zoom", Vector2(4, 4) / (modifier), 1)
-	custom_grav = CUSTOM_GRAV * modifier
+	custom_grav = initial_gravity * modifier
 	animation_state.travel("transform")
 	is_transforming = true
 

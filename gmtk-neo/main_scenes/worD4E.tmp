@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://blsog6wyp8gb"]
+[gd_scene load_steps=22 format=4 uid="uid://blsog6wyp8gb"]
 
 [ext_resource type="Script" path="res://main_scenes/game_manager.gd" id="1_oxcw7"]
 [ext_resource type="Script" path="res://global/input_handler.gd" id="1_x6u0i"]
@@ -8,8 +8,6 @@
 [ext_resource type="TileSet" uid="uid://bmolutyui6j4o" path="res://tilesets/tileset_mini.tres" id="5_lcoo3"]
 [ext_resource type="PackedScene" uid="uid://wbkaryl8s2tk" path="res://player_character/player.tscn" id="6_p4054"]
 [ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://abilities/grappling_hook.tscn" id="7_n37cw"]
-[ext_resource type="Texture2D" uid="uid://ced03wtisp5qe" path="res://art/direction_right.png" id="8_5y5d6"]
-[ext_resource type="Texture2D" uid="uid://cowcg5cpntrxr" path="res://art/direction_up.png" id="9_dqgp3"]
 [ext_resource type="Texture2D" uid="uid://dl5xvq4ysb8te" path="res://art/tileset_small.png" id="10_7yicp"]
 [ext_resource type="Script" path="res://pivot.gd" id="10_vdn50"]
 [ext_resource type="Shader" path="res://shaders/post_processing.gdshader" id="12_0vpea"]
@@ -65,8 +63,9 @@ gradient = SubResource("Gradient_icc77")
 [sub_resource type="CircleShape2D" id="CircleShape2D_s0niq"]
 radius = 41.0
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" node_paths=PackedStringArray("pause_menu")]
 script = ExtResource("1_oxcw7")
+pause_menu = NodePath("")
 
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource("1_x6u0i")
@@ -121,14 +120,6 @@ offset_right = 1448.0
 offset_bottom = 876.0
 pivot_offset = Vector2(1333, 713)
 
-[node name="DirectionRight" type="Sprite2D" parent="PostProcessing"]
-position = Vector2(430, -296)
-texture = ExtResource("8_5y5d6")
-
-[node name="DirectionUp" type="Sprite2D" parent="PostProcessing"]
-position = Vector2(742, -232)
-texture = ExtResource("9_dqgp3")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ejtjb")
 
@@ -161,7 +152,7 @@ metadata/_edit_lock_ = true
 shape = SubResource("RectangleShape2D_8bb1b")
 
 [node name="Pivot" type="Area2D" parent="."]
-position = Vector2(257, -331)
+position = Vector2(199, -212)
 script = ExtResource("10_vdn50")
 metadata/_edit_group_ = true
 
@@ -170,9 +161,5 @@ shape = SubResource("CircleShape2D_s0niq")
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 texture = ExtResource("10_7yicp")
-
-[node name="DirectionUp" type="Sprite2D" parent="."]
-position = Vector2(399, -115)
-texture = ExtResource("9_dqgp3")
 
 [connection signal="mouse_entered" from="Pivot" to="Pivot" method="_on_mouse_entered"]

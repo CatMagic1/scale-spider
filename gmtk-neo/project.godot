@@ -19,6 +19,8 @@ config/icon="res://art/tileset_medium.png"
 [autoload]
 
 Events="*res://global/events.gd"
+SceneManager="*res://global/scene_manager.tscn"
+SoundManager="*res://global/sound_manager.tscn"
 
 [display]
 

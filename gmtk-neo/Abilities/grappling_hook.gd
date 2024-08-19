@@ -9,10 +9,10 @@ var tip := Vector2(0,0)			# The global position the tip should be in
 								# properties would get messed with when the player
 								# moves.
 
-const SPEED = 50	# The speed with which the chain moves
-const CHAIN_PULL = 50
-const OFFSET = Vector2(0, -13)
-const RANGE = 150
+@export var SPEED := 20	# The speed with which the chain moves
+@export var CHAIN_PULL := 20
+@export var OFFSET := Vector2(0, -13)
+@export var RANGE := 150
 
 var flying = false	# Whether the chain is moving through the air
 var hooked = false	# Whether the chain has connected to a wall
@@ -27,7 +27,7 @@ func _ready() -> void:
 	Events.ability_executed.connect(shoot)
 	Events.ability_cancelled.connect(release)
 	Events.scale_changed.connect(_update_chain_pull)
-	
+
 	parent = get_parent()
 
 
@@ -52,7 +52,7 @@ func _process(_delta: float) -> void:
 	self.visible = flying or hooked	# Only visible if flying or attached to something
 	if not self.visible:
 		return	# Not visible -> nothing to draw
-	var tip_loc = tip	
+	var tip_loc = tip
 	# We rotate the links (= chain) and the tip to fit on the line between self.position (= origin = player.position) and the tip
 	var player_pos = parent.global_position + OFFSET
 	links.rotation = player_pos.angle_to_point(tip_loc) - deg_to_rad(90)
