@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=4 uid="uid://blsog6wyp8gb"]
+[gd_scene load_steps=30 format=4 uid="uid://blsog6wyp8gb"]
 
 [ext_resource type="Script" path="res://main_scenes/game_manager.gd" id="1_oxcw7"]
 [ext_resource type="Script" path="res://global/input_handler.gd" id="1_x6u0i"]
 [ext_resource type="TileSet" uid="uid://bcivxbldl1c5d" path="res://tilesets/tileset_large.tres" id="2_8dhwf"]
+[ext_resource type="Theme" uid="uid://d4fvlsthuo5w3" path="res://themes/main_theme.tres" id="3_n0n1f"]
 [ext_resource type="TileSet" uid="uid://crwkjsaye7odi" path="res://tilesets/tileset_small.tres" id="4_ssbff"]
 [ext_resource type="TileSet" uid="uid://bmolutyui6j4o" path="res://tilesets/tileset_mini.tres" id="5_lcoo3"]
 [ext_resource type="PackedScene" uid="uid://wbkaryl8s2tk" path="res://player_character/character_body_2d.tscn" id="6_p4054"]
@@ -339,6 +340,29 @@ pause_menu = NodePath("PauseMenu")
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource("1_x6u0i")
 
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="BG" type="ColorRect" parent="Background"]
+z_index = -2
+offset_left = -170.0
+offset_top = -68.0
+offset_right = 1392.0
+offset_bottom = 804.0
+color = Color(0.056, 0, 0.12, 1)
+
+[node name="IntroText" type="Label" parent="."]
+offset_left = 273.0
+offset_top = -195.0
+offset_right = 574.0
+offset_bottom = -68.0
+theme = ExtResource("3_n0n1f")
+text = "There is no clear goal
+Simply explore and enjoy the present
+
+Morph: [1], [2], [3], [4]
+Web sling: [RMB]"
+
 [node name="Level" type="Node2D" parent="."]
 
 [node name="Large" type="TileMapLayer" parent="Level"]
@@ -387,14 +411,6 @@ position = Vector2(0, -13)
 blend_mode = 1
 texture = SubResource("GradientTexture2D_u47j0")
 texture_scale = 10.0
-
-[node name="BG" type="ColorRect" parent="."]
-z_index = -2
-offset_left = -627.0
-offset_top = -788.0
-offset_right = 935.0
-offset_bottom = 459.0
-color = Color(0.056, 0, 0.12, 1)
 
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 
