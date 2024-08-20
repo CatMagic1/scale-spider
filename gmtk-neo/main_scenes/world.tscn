@@ -14,7 +14,7 @@
 [ext_resource type="Theme" uid="uid://d4fvlsthuo5w3" path="res://themes/main_theme.tres" id="8_3638d"]
 [ext_resource type="Texture2D" uid="uid://bjx6imc7grrl5" path="res://art/light.png" id="9_agyww"]
 [ext_resource type="AudioStream" uid="uid://b5t1vaqkfxd4n" path="res://audio/music/pads.wav" id="9_btons"]
-[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://abilities/grappling_hook.tscn" id="9_emx1d"]
+[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://Abilities/grappling_hook.tscn" id="9_emx1d"]
 [ext_resource type="AudioStream" uid="uid://bb3oovklxd6wv" path="res://audio/music/piano.wav" id="10_t52ab"]
 [ext_resource type="AudioStream" uid="uid://jw32y6mptkhe" path="res://audio/music/violins.wav" id="11_d3eoq"]
 [ext_resource type="AudioStream" uid="uid://bdd0yyd5ge86n" path="res://audio/music/bass.wav" id="12_xj3rj"]
@@ -368,36 +368,30 @@ rich_text_label_2 = NodePath("../UI/VBoxContainer/RichTextLabel2")
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="BG" type="ColorRect" parent="Background"]
-z_index = -2
-offset_left = -170.0
-offset_top = -68.0
-offset_right = 1392.0
-offset_bottom = 804.0
-color = Color(0.056, 0, 0.12, 1)
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
-visible = false
+scroll_base_offset = Vector2(-1280, 0)
 scroll_base_scale = Vector2(1, 0)
+scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-motion_mirroring = Vector2(1280, 0)
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(1280, 720)
 
 [node name="TextureRect" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer"]
 texture = ExtResource("3_ai3ca")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(1280, 0)
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(1280, 720)
 
 [node name="TextureRect" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer2"]
 texture = ExtResource("4_2x3ou")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.2)
-motion_mirroring = Vector2(1280, 0)
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(1280, 720)
 
 [node name="TextureRect" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer3"]
 texture = ExtResource("5_ptjkv")
@@ -552,6 +546,16 @@ region_rect = Rect2(152, 48, 64, 40)
 
 [node name="Collectible" parent="Props" instance=ExtResource("17_jf41c")]
 position = Vector2(-672, 197)
+region_rect = Rect2(64, 32, 32, 32)
+collectible_type = 1
+
+[node name="Collectible11" parent="Props" instance=ExtResource("17_jf41c")]
+position = Vector2(-765, 147)
+region_rect = Rect2(64, 32, 32, 32)
+collectible_type = 1
+
+[node name="Collectible12" parent="Props" instance=ExtResource("17_jf41c")]
+position = Vector2(-616, 137)
 region_rect = Rect2(64, 32, 32, 32)
 collectible_type = 1
 

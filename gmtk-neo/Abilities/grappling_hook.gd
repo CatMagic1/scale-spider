@@ -27,7 +27,7 @@ func _ready() -> void:
 	Events.ability_executed.connect(shoot)
 	Events.ability_cancelled.connect(release)
 	Events.scale_changed.connect(_update_chain_pull)
-	
+
 	parent = get_parent()
 
 
@@ -52,7 +52,7 @@ func _process(_delta: float) -> void:
 	self.visible = flying or hooked	# Only visible if flying or attached to something
 	if not self.visible:
 		return	# Not visible -> nothing to draw
-	var tip_loc = tip	
+	var tip_loc = tip
 	# We rotate the links (= chain) and the tip to fit on the line between self.position (= origin = player.position) and the tip
 	var player_pos = parent.global_position + OFFSET
 	links.rotation = player_pos.angle_to_point(tip_loc) - deg_to_rad(90)
