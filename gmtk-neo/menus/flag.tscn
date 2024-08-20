@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://menus/flag.gd" id="1_4gqv0"]
 [ext_resource type="Texture2D" uid="uid://tvfewfpehxid" path="res://art/tileset_mini.png" id="2_hpiws"]
-[ext_resource type="PackedScene" uid="uid://c6wrsgoumq7xa" path="res://menus/ending.tscn" id="2_qdota"]
+[ext_resource type="PackedScene" uid="uid://c6wrsgoumq7xa" path="res://ending.tscn" id="2_qdota"]
+
 
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2xe2"]

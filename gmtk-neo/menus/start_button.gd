@@ -1,6 +1,7 @@
 extends Button
 
 @export_file("*.tscn") var start_scene: String
+	get_tree().change_scene_to_file(start_scene)
 
 @onready var hover_player: AudioStreamPlayer = get_parent().get_node("HoverPlayer")
 @onready var click_player: AudioStreamPlayer = get_parent().get_node("ClickPlayer")

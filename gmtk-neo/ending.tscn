@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6wrsgoumq7xa"]
+
+[ext_resource type="AudioStream" uid="uid://m6p47m0sxodv" path="res://ending.wav" id="1_1nocg"]
+[ext_resource type="Script" path="res://ending.gd" id="1_61vli"]
+[ext_resource type="Texture2D" uid="uid://dlonddhqkvhyo" path="res://Cutscene-Spritesheet-chappie.png" id="2_d88tn"]
+
+[sub_resource type="Animation" id="Animation_51awl"]
+resource_name = "play"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 20, 16]
+}
+
+[sub_resource type="Animation" id="Animation_4ithe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pplri"]
+_data = {
+"RESET": SubResource("Animation_4ithe"),
+"play": SubResource("Animation_51awl")
+}
+
+[node name="Cutscene" type="Node2D"]
+script = ExtResource("1_61vli")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_1nocg")
+autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_d88tn")
+hframes = 21
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pplri")
+}
+autoplay = "play"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
