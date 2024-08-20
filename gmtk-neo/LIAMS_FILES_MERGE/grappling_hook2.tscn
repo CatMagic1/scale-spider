@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5wpc00jirj5h"]
+
+[ext_resource type="Script" path="res://Abilities/grappling_hook.gd" id="1_y4qww"]
+[ext_resource type="Texture2D" uid="uid://c0byup80d1o04" path="res://art/WebEnd.png" id="2_s6jg5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l4sss"]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_atiyk"]
+radius = 5.0
+height = 10.0
+
+[node name="GrapplingHook2" type="Node2D"]
+script = ExtResource("1_y4qww")
+
+[node name="Tip" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
+z_index = -1
+collision_layer = 4
+slide_on_ceiling = false
+floor_constant_speed = true
+floor_block_on_wall = false
+
+[node name="Hook" type="Sprite2D" parent="Tip"]
+position = Vector2(-1.19209e-07, -1.19209e-07)
+texture = ExtResource("2_s6jg5")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tip"]
+scale = Vector2(0.440001, 0.968969)
+shape = SubResource("CapsuleShape2D_l4sss")
+
+[node name="Area2D" type="Area2D" parent="Tip"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tip/Area2D"]
+shape = SubResource("CapsuleShape2D_atiyk")
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = -1
+texture_mode = 1
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+scale = Vector2(4, 4)
+target_position = Vector2(100, 0)
+hit_from_inside = true
+
+[connection signal="area_entered" from="Tip/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Tip/Area2D" to="." method="_on_area_2d_body_entered"]

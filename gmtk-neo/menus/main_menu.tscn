@@ -9,11 +9,11 @@
 [ext_resource type="TileSet" uid="uid://crwkjsaye7odi" path="res://tilesets/tileset_small.tres" id="4_s1xmf"]
 [ext_resource type="AudioStream" uid="uid://1yfwruexxqqe" path="res://audio/sfx/hover.wav" id="5_ar0ym"]
 [ext_resource type="AudioStream" uid="uid://74pyvl7f4xmp" path="res://audio/sfx/click.wav" id="6_frfby"]
-[ext_resource type="Script" path="res://player_character/character_body_2d.gd" id="8_ua585"]
-[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://Abilities/grappling_hook.tscn" id="9_0qgq3"]
+[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://MERGE/grappling_hook2.tscn" id="9_0qgq3"]
 [ext_resource type="Texture2D" uid="uid://bo4yrv5yv2as2" path="res://art/player_big.png" id="9_h6xmk"]
 [ext_resource type="AudioStream" uid="uid://b5t1vaqkfxd4n" path="res://audio/music/pads.wav" id="10_h4ogd"]
 [ext_resource type="AudioStream" uid="uid://bb3oovklxd6wv" path="res://audio/music/piano.wav" id="11_4qjjw"]
+[ext_resource type="Script" path="res://player_character/character_main_menu.gd" id="11_x3l5i"]
 [ext_resource type="AudioStream" uid="uid://jw32y6mptkhe" path="res://audio/music/violins.wav" id="12_4wt2a"]
 [ext_resource type="AudioStream" uid="uid://bdd0yyd5ge86n" path="res://audio/music/bass.wav" id="13_daruw"]
 [ext_resource type="TileSet" uid="uid://bcivxbldl1c5d" path="res://tilesets/tileset_large.tres" id="15_lpsxv"]
@@ -652,7 +652,7 @@ stream = SubResource("AudioStreamRandomizer_30bix")
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(631, 95)
 collision_layer = 2
-script = ExtResource("8_ua585")
+script = ExtResource("11_x3l5i")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 position = Vector2(0, -13)
