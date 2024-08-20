@@ -1,18 +1,15 @@
-[gd_scene load_steps=40 format=4 uid="uid://blsog6wyp8gb"]
+[gd_scene load_steps=38 format=4 uid="uid://blsog6wyp8gb"]
 
 [ext_resource type="Script" path="res://main_scenes/game_manager.gd" id="1_17hjn"]
 [ext_resource type="Script" path="res://global/input_handler.gd" id="1_hydux"]
 [ext_resource type="TileSet" uid="uid://bmolutyui6j4o" path="res://tilesets/tileset_mini.tres" id="2_ky8vy"]
-[ext_resource type="Texture2D" uid="uid://pyfxcypfuws6" path="res://art/2-super_far-penusbmic.png" id="3_ai3ca"]
 [ext_resource type="Script" path="res://main_scenes/collectible_handler.gd" id="3_imc2q"]
 [ext_resource type="TileSet" uid="uid://crwkjsaye7odi" path="res://tilesets/tileset_small.tres" id="3_mfihl"]
-[ext_resource type="Texture2D" uid="uid://clb6s2x56d3u6" path="res://art/3-far-penusbmic.png" id="4_2x3ou"]
 [ext_resource type="TileSet" uid="uid://ch3itfmy1fwlh" path="res://tilesets/tileset_medium.tres" id="4_3f8ym"]
-[ext_resource type="Texture2D" uid="uid://de5daxwj1y2sk" path="res://art/7-closest-penusbmic.png" id="5_ptjkv"]
+[ext_resource type="PackedScene" uid="uid://c2twsgdprsbrg" path="res://main_scenes/parallax_background.tscn" id="4_euqdw"]
 [ext_resource type="TileSet" uid="uid://bcivxbldl1c5d" path="res://tilesets/tileset_large.tres" id="5_xsq2u"]
 [ext_resource type="PackedScene" uid="uid://wbkaryl8s2tk" path="res://player_character/character_body_2d.tscn" id="6_4085y"]
 [ext_resource type="Theme" uid="uid://d4fvlsthuo5w3" path="res://themes/main_theme.tres" id="8_3638d"]
-[ext_resource type="Texture2D" uid="uid://bjx6imc7grrl5" path="res://art/light.png" id="9_agyww"]
 [ext_resource type="AudioStream" uid="uid://b5t1vaqkfxd4n" path="res://audio/music/pads.wav" id="9_btons"]
 [ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://abilities/grappling_hook.tscn" id="9_emx1d"]
 [ext_resource type="AudioStream" uid="uid://bb3oovklxd6wv" path="res://audio/music/piano.wav" id="10_t52ab"]
@@ -21,6 +18,7 @@
 [ext_resource type="Shader" path="res://shaders/post_processing.gdshader" id="14_sjoxu"]
 [ext_resource type="PackedScene" uid="uid://bm1k2k2lwx66b" path="res://menus/pause_menu.tscn" id="15_bdkb3"]
 [ext_resource type="PackedScene" uid="uid://b6bky1a0pekyk" path="res://collectibles/collectible.tscn" id="17_jf41c"]
+[ext_resource type="Texture2D" uid="uid://cygyfmtnhqh3" path="res://art/graphic-assets-chappie-1.png" id="22_v5awo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r8rah"]
 0:0/0 = 0
@@ -368,40 +366,7 @@ rich_text_label_2 = NodePath("../UI/VBoxContainer/RichTextLabel2")
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="BG" type="ColorRect" parent="Background"]
-z_index = -2
-offset_left = -170.0
-offset_top = -68.0
-offset_right = 1392.0
-offset_bottom = 804.0
-color = Color(0.056, 0, 0.12, 1)
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
-visible = false
-scroll_base_scale = Vector2(1, 0)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-motion_mirroring = Vector2(1280, 0)
-
-[node name="TextureRect" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("3_ai3ca")
-centered = false
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(1280, 0)
-
-[node name="TextureRect" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource("4_2x3ou")
-centered = false
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.2)
-motion_mirroring = Vector2(1280, 0)
-
-[node name="TextureRect" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer3"]
-texture = ExtResource("5_ptjkv")
-centered = false
+[node name="ParallaxBackground" parent="Background" instance=ExtResource("4_euqdw")]
 
 [node name="Level" type="Node2D" parent="."]
 
@@ -458,7 +423,9 @@ texture_scale = 10.0
 
 [node name="Portal" type="Sprite2D" parent="."]
 position = Vector2(3473, -2702)
-texture = ExtResource("9_agyww")
+texture = ExtResource("22_v5awo")
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 40)
 
 [node name="Area2D" type="Area2D" parent="Portal"]
 collision_layer = 8
@@ -513,92 +480,106 @@ theme_override_font_sizes/normal_font_size = 9
 text = "Release at the apex of your swing to go weeeee"
 scroll_active = false
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="."]
-offset_left = 3451.0
-offset_top = -2804.0
-offset_right = 3581.0
-offset_bottom = -2747.0
-theme = ExtResource("8_3638d")
-theme_override_font_sizes/bold_italics_font_size = 9
-theme_override_font_sizes/mono_font_size = 9
-theme_override_font_sizes/normal_font_size = 9
-text = "The End?
-"
-scroll_active = false
-
 [node name="Instruments" type="Node2D" parent="."]
 
 [node name="Collectible" parent="Instruments" instance=ExtResource("17_jf41c")]
 position = Vector2(1690, -1177)
-region_rect = Rect2(240, 0, 64, 32)
 
 [node name="Collectible2" parent="Instruments" instance=ExtResource("17_jf41c")]
 position = Vector2(996, -685)
-region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Collectible" parent="Instruments/Collectible2" index="0"]
+region_rect = Rect2(160, 0, 32, 48)
 
 [node name="Collectible3" parent="Instruments" instance=ExtResource("17_jf41c")]
 position = Vector2(2588, -952)
-region_rect = Rect2(192, 0, 48, 32)
+
+[node name="Collectible" parent="Instruments/Collectible3" index="0"]
+region_rect = Rect2(192, 8, 48, 24)
 
 [node name="Collectible4" parent="Instruments" instance=ExtResource("17_jf41c")]
-position = Vector2(1835, -4110)
-region_rect = Rect2(160, 0, 32, 48)
+position = Vector2(1618, -3304)
+
+[node name="Collectible" parent="Instruments/Collectible4" index="0"]
+region_rect = Rect2(240, 0, 64, 40)
 
 [node name="Collectible5" parent="Instruments" instance=ExtResource("17_jf41c")]
 position = Vector2(-564, -445)
-region_rect = Rect2(152, 48, 64, 40)
+
+[node name="Collectible" parent="Instruments/Collectible5" index="0"]
+region_rect = Rect2(0, 0, 32, 32)
 
 [node name="Props" type="Node2D" parent="."]
 
 [node name="Collectible" parent="Props" instance=ExtResource("17_jf41c")]
 position = Vector2(-672, 197)
-region_rect = Rect2(64, 32, 32, 32)
 collectible_type = 1
+
+[node name="Collectible" parent="Props/Collectible" index="0"]
+region_rect = Rect2(64, 32, 32, 32)
 
 [node name="Collectible2" parent="Props" instance=ExtResource("17_jf41c")]
 position = Vector2(-572, -1085)
-region_rect = Rect2(64, 32, 32, 32)
 collectible_type = 1
+
+[node name="Collectible" parent="Props/Collectible2" index="0"]
+region_rect = Rect2(64, 32, 32, 32)
 
 [node name="Collectible3" parent="Props" instance=ExtResource("17_jf41c")]
 position = Vector2(30, -699)
-region_rect = Rect2(64, 32, 32, 32)
 collectible_type = 1
+
+[node name="Collectible" parent="Props/Collectible3" index="0"]
+region_rect = Rect2(64, 32, 32, 32)
 
 [node name="Collectible4" parent="Props" instance=ExtResource("17_jf41c")]
 position = Vector2(2327, -962)
-region_rect = Rect2(64, 32, 32, 32)
 collectible_type = 1
+
+[node name="Collectible" parent="Props/Collectible4" index="0"]
+region_rect = Rect2(64, 32, 32, 32)
 
 [node name="Collectible5" parent="Props" instance=ExtResource("17_jf41c")]
 position = Vector2(9, -1521)
-region_rect = Rect2(64, 32, 32, 32)
 collectible_type = 1
+
+[node name="Collectible" parent="Props/Collectible5" index="0"]
+region_rect = Rect2(64, 32, 32, 32)
 
 [node name="Collectible6" parent="Props" instance=ExtResource("17_jf41c")]
 position = Vector2(494, -1922)
-region_rect = Rect2(64, 32, 32, 32)
 collectible_type = 1
+
+[node name="Collectible" parent="Props/Collectible6" index="0"]
+region_rect = Rect2(64, 32, 32, 32)
 
 [node name="Collectible7" parent="Props" instance=ExtResource("17_jf41c")]
 position = Vector2(355, -828)
-region_rect = Rect2(64, 32, 32, 32)
 collectible_type = 1
+
+[node name="Collectible" parent="Props/Collectible7" index="0"]
+region_rect = Rect2(64, 32, 32, 32)
 
 [node name="Collectible8" parent="Props" instance=ExtResource("17_jf41c")]
 position = Vector2(3168, -2718)
-region_rect = Rect2(64, 32, 32, 32)
 collectible_type = 1
+
+[node name="Collectible" parent="Props/Collectible8" index="0"]
+region_rect = Rect2(64, 32, 32, 32)
 
 [node name="Collectible9" parent="Props" instance=ExtResource("17_jf41c")]
 position = Vector2(2767, -1440)
-region_rect = Rect2(64, 32, 32, 32)
 collectible_type = 1
+
+[node name="Collectible" parent="Props/Collectible9" index="0"]
+region_rect = Rect2(64, 32, 32, 32)
 
 [node name="Collectible10" parent="Props" instance=ExtResource("17_jf41c")]
 position = Vector2(2542, -1958)
-region_rect = Rect2(64, 32, 32, 32)
 collectible_type = 1
+
+[node name="Collectible" parent="Props/Collectible10" index="0"]
+region_rect = Rect2(64, 32, 32, 32)
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 10
@@ -643,3 +624,18 @@ text = "0 / 10 Props collected"
 [connection signal="pressed" from="PauseMenu/SettingsPanelContainer/VBoxContainer/HBoxContainer/OptionsContainer/Exit" to="." method="_on_exit_game"]
 
 [editable path="PauseMenu"]
+[editable path="Instruments/Collectible"]
+[editable path="Instruments/Collectible2"]
+[editable path="Instruments/Collectible3"]
+[editable path="Instruments/Collectible4"]
+[editable path="Instruments/Collectible5"]
+[editable path="Props/Collectible"]
+[editable path="Props/Collectible2"]
+[editable path="Props/Collectible3"]
+[editable path="Props/Collectible4"]
+[editable path="Props/Collectible5"]
+[editable path="Props/Collectible6"]
+[editable path="Props/Collectible7"]
+[editable path="Props/Collectible8"]
+[editable path="Props/Collectible9"]
+[editable path="Props/Collectible10"]

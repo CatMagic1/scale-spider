@@ -1,8 +1,8 @@
-class_name collectible
-extends Sprite2D
+class_name Collectible
+extends Node2D
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var animation_player: AnimationPlayer = $Collectible/AnimationPlayer
+@onready var audio_stream_player: AudioStreamPlayer = $Collectible/AudioStreamPlayer
 
 @export var collectible_type: CollectibleType
 
