@@ -5,8 +5,13 @@ extends Node2D
 
 var _game_paused = false
 
+@onready var player = $Player
+@onready var spawn_point = $SpawnPoint
+
 const MIN_DB = -20.0
 const MAX_DB = 20.0
+
+var stage = 0
 
 
 func _ready() -> void:
@@ -51,3 +56,10 @@ func _on_volume_changed(value):
 
 func _on_exit_game():
 	get_tree().quit()
+
+
+# Called from portal
+func on_goal_reached(c):
+	player.global_position = spawn_point.global_position
+	stage += 1
+	player.set_morph(stage)

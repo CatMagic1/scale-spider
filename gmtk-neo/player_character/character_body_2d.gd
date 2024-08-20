@@ -36,8 +36,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	else:
 		animation_state.travel("Idle")
-
-	# Handle jump.
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("walk_left", "walk_right")
@@ -63,29 +62,26 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-# TODO MUSIC ANIMATION PLAYER DOES NOT EXIST
-func _input(event: InputEvent) -> void:
-	if is_transforming: return
-	
-	if event.is_action_pressed("1"):
+func set_morph(idx: int):
+	if idx == 0:
 		music_animation.play("4")
 		sprite.texture = large_sprite
 		collision.shape.radius = 13
 		collision.shape.height = 28
 		change_size(1)
-	elif event.is_action_pressed("2"):
+	elif idx == 1:
 		music_animation.play("3")
 		sprite.texture = medium_sprite
 		collision.shape.radius = 6
 		collision.shape.height = 14
 		change_size(0.5)
-	elif event.is_action_pressed("3"):
+	elif idx == 2:
 		music_animation.play("2")
 		sprite.texture = small_sprite
 		collision.shape.radius = 7
 		collision.shape.height = 7
 		change_size(0.25)
-	elif event.is_action_pressed("4"):
+	elif idx == 3:
 		music_animation.play("1")
 		sprite.texture = mini_sprite
 		collision.shape.radius = 1.5
@@ -103,7 +99,5 @@ func change_size(modifier: float) -> void:
 	custom_grav = CUSTOM_GRAV * modifier
 	animation_state.travel("transform")
 	is_transforming = true
-
-
-func _finished_transform():
+	await get_tree().create_timer(1.6).timeout
 	is_transforming = false

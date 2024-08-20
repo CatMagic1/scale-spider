@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://blsog6wyp8gb"]
+[gd_scene load_steps=32 format=4 uid="uid://blsog6wyp8gb"]
 
 [ext_resource type="Script" path="res://main_scenes/game_manager.gd" id="1_oxcw7"]
 [ext_resource type="Script" path="res://global/input_handler.gd" id="1_x6u0i"]
@@ -7,13 +7,14 @@
 [ext_resource type="TileSet" uid="uid://crwkjsaye7odi" path="res://tilesets/tileset_small.tres" id="4_ssbff"]
 [ext_resource type="TileSet" uid="uid://bmolutyui6j4o" path="res://tilesets/tileset_mini.tres" id="5_lcoo3"]
 [ext_resource type="PackedScene" uid="uid://wbkaryl8s2tk" path="res://player_character/character_body_2d.tscn" id="6_p4054"]
-[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://abilities/grappling_hook.tscn" id="7_n37cw"]
+[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://Abilities/grappling_hook.tscn" id="7_n37cw"]
 [ext_resource type="AudioStream" uid="uid://b5t1vaqkfxd4n" path="res://audio/music/pads.wav" id="8_gdvvd"]
 [ext_resource type="AudioStream" uid="uid://bb3oovklxd6wv" path="res://audio/music/piano.wav" id="9_g25ym"]
 [ext_resource type="AudioStream" uid="uid://jw32y6mptkhe" path="res://audio/music/violins.wav" id="10_0cr3y"]
 [ext_resource type="AudioStream" uid="uid://bdd0yyd5ge86n" path="res://audio/music/bass.wav" id="11_64c47"]
 [ext_resource type="Shader" path="res://shaders/post_processing.gdshader" id="12_0vpea"]
 [ext_resource type="PackedScene" uid="uid://bm1k2k2lwx66b" path="res://menus/pause_menu.tscn" id="12_cm2ku"]
+[ext_resource type="Texture2D" uid="uid://bjx6imc7grrl5" path="res://art/light.png" id="13_8lurg"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_hf8ti"]
 stream_count = 4
@@ -311,6 +312,8 @@ colors = PackedColorArray(1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_u47j0"]
 gradient = SubResource("Gradient_icc77")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_t267k"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kaipa"]
 shader = ExtResource("12_0vpea")
 shader_parameter/change_color_depth = false
@@ -352,15 +355,13 @@ offset_bottom = 804.0
 color = Color(0.056, 0, 0.12, 1)
 
 [node name="IntroText" type="Label" parent="."]
-offset_left = 273.0
-offset_top = -195.0
-offset_right = 574.0
-offset_bottom = -68.0
+offset_left = 353.0
+offset_top = -199.0
+offset_right = 654.0
+offset_bottom = -72.0
 theme = ExtResource("3_n0n1f")
-text = "There is no clear goal
-Simply explore and enjoy the present
-
-Morph: [1], [2], [3], [4]
+text = "Move: [A] [D]
+Jump: [SPACE]
 Web sling: [RMB]"
 
 [node name="Level" type="Node2D" parent="."]
@@ -381,7 +382,7 @@ tile_map_data = PackedByteArray("AAB2AOv/AAACAAMAAAB1AOv/AAACAAMAAAB0AOv/AAACAAM
 tile_set = ExtResource("5_lcoo3")
 
 [node name="Player" parent="." instance=ExtResource("6_p4054")]
-position = Vector2(396, -133)
+position = Vector2(396, -121)
 
 [node name="GrapplingHook" parent="Player" instance=ExtResource("7_n37cw")]
 show_behind_parent = true
@@ -412,6 +413,20 @@ blend_mode = 1
 texture = SubResource("GradientTexture2D_u47j0")
 texture_scale = 10.0
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(267, -479)
+texture = ExtResource("13_8lurg")
+
+[node name="Goal" type="Area2D" parent="Sprite2D"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Goal"]
+shape = SubResource("CircleShape2D_t267k")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(396, -142)
+
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="PostProcessing"]
@@ -429,6 +444,7 @@ script = null
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ejtjb")
 
+[connection signal="body_entered" from="Sprite2D/Goal" to="." method="on_goal_reached"]
 [connection signal="value_changed" from="PauseMenu/SettingsPanelContainer/VBoxContainer/HBoxContainer/SettingsContainer/Volume/VolumeSlider" to="." method="_on_volume_changed"]
 [connection signal="pressed" from="PauseMenu/SettingsPanelContainer/VBoxContainer/HBoxContainer/OptionsContainer/Resume" to="." method="_toggle_paused_game"]
 [connection signal="pressed" from="PauseMenu/SettingsPanelContainer/VBoxContainer/HBoxContainer/OptionsContainer/Restart" to="." method="_on_restart_game"]
