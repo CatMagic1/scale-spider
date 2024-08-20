@@ -9,7 +9,7 @@
 [ext_resource type="TileSet" uid="uid://crwkjsaye7odi" path="res://tilesets/tileset_small.tres" id="4_s1xmf"]
 [ext_resource type="AudioStream" uid="uid://1yfwruexxqqe" path="res://audio/sfx/hover.wav" id="5_ar0ym"]
 [ext_resource type="AudioStream" uid="uid://74pyvl7f4xmp" path="res://audio/sfx/click.wav" id="6_frfby"]
-[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://MERGE/grappling_hook2.tscn" id="9_0qgq3"]
+[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://abilities/grappling_hook.tscn" id="9_0qgq3"]
 [ext_resource type="Texture2D" uid="uid://bo4yrv5yv2as2" path="res://art/player_big.png" id="9_h6xmk"]
 [ext_resource type="AudioStream" uid="uid://b5t1vaqkfxd4n" path="res://audio/music/pads.wav" id="10_h4ogd"]
 [ext_resource type="AudioStream" uid="uid://bb3oovklxd6wv" path="res://audio/music/piano.wav" id="11_4qjjw"]
@@ -676,7 +676,6 @@ shape = SubResource("CapsuleShape2D_6x2qj")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
 
 [node name="GrapplingHook" parent="Player" instance=ExtResource("9_0qgq3")]
-show_behind_parent = true
 position = Vector2(0, -13)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="Player"]

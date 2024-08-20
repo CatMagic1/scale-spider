@@ -34,10 +34,11 @@ func _toggle_paused_game():
 
 func _on_restart_game():
 	_game_paused = false
+	get_tree().paused = false
 	Engine.time_scale = 1
 	pause_menu.hide()
 	
-	get_tree().reload_current_scene()
+	player.global_position = spawn_point.global_position
 
 
 func _on_volume_changed(value):

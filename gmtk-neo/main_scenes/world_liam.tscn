@@ -6,7 +6,7 @@
 [ext_resource type="TileSet" uid="uid://ch3itfmy1fwlh" path="res://tilesets/tileset_medium.tres" id="4_q4vj8"]
 [ext_resource type="TileSet" uid="uid://bcivxbldl1c5d" path="res://tilesets/tileset_large.tres" id="5_a4cgl"]
 [ext_resource type="PackedScene" uid="uid://wbkaryl8s2tk" path="res://player_character/character_body_2d.tscn" id="6_ejexd"]
-[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://MERGE/grappling_hook2.tscn" id="7_bxe8l"]
+[ext_resource type="PackedScene" uid="uid://b5wpc00jirj5h" path="res://LIAMS_FILES_MERGE/grappling_hook2.tscn" id="7_bxe8l"]
 [ext_resource type="Theme" uid="uid://d4fvlsthuo5w3" path="res://themes/main_theme.tres" id="8_vdxes"]
 [ext_resource type="Texture2D" uid="uid://bjx6imc7grrl5" path="res://art/light.png" id="9_70blq"]
 
@@ -40,7 +40,7 @@ gradient = SubResource("Gradient_olrgi")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_llm6c"]
 
-[node name="World" type="Node2D"]
+[node name="World2" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -2

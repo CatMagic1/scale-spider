@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6bky1a0pekyk"]
+
+[ext_resource type="Texture2D" uid="uid://cygyfmtnhqh3" path="res://art/graphic-assets-chappie-1.png" id="1_4m662"]
+[ext_resource type="Script" path="res://main_scenes/collectible.gd" id="1_h1fxs"]
+[ext_resource type="AudioStream" uid="uid://w6ff25a8e72x" path="res://audio/sfx/grass.wav" id="2_tksln"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4h27v"]
+
+[sub_resource type="Animation" id="Animation_df0ix"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Collectible:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.174533, 0.0, -0.174533, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collectible/AnimationPlayer:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.6, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_b5ug8"]
+resource_name = "on_pickup"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Collectible:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collectible:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wpv53"]
+_data = {
+"idle": SubResource("Animation_df0ix"),
+"on_pickup": SubResource("Animation_b5ug8")
+}
+
+[node name="Collectible" type="Sprite2D"]
+texture = ExtResource("1_4m662")
+region_enabled = true
+region_rect = Rect2(160, 48, 56, 32)
+script = ExtResource("1_h1fxs")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_4h27v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_wpv53")
+}
+speed_scale = 0.6
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tksln")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_collected"]

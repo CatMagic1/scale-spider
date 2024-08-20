@@ -9,3 +9,6 @@ signal scale_changed(new_scale: float)
 signal toggle_pause_requested
 signal on_restart_game
 signal on_exit_game
+
+# Collectibles
+signal collectible_found(type: int)
